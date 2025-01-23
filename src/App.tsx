@@ -14,6 +14,14 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Avatar, AvatarImage, AvatarFallback } from "./components/ui/avatar";
 
 // Import page components
 import { WebsitesPage } from "@/pages/websites";
@@ -45,6 +53,14 @@ import { HyperdrivePage } from "@/pages/storage/hyperdrive";
 import { QueuesPage } from "@/pages/storage/queues";
 import { TokensPage } from "@/pages/account/tokens";
 import { CreateTokenPage } from "@/pages/account/tokens/create";
+import { ProfileLayout, PreferencesPage } from "@/pages/account/profile";
+import { AccountHomePage } from "@/pages/account/home";
+import { BillingPage } from "@/pages/account/billing";
+import { AppearancePage } from "@/pages/account/appearance";
+import { AuthenticationPage } from "@/pages/account/authentication";
+import { SessionsPage } from "@/pages/account/sessions";
+import { ProfileTokensPage } from "@/pages/account/tokens/profile-tokens";
+import { ProfileCreateTokenPage } from "@/pages/account/tokens/profile-create-token";
 
 // Move Dashboard content to a separate component
 function DashboardContent() {
@@ -82,9 +98,48 @@ function AppLayout() {
               </button>
               <button className="text-sm">Support</button>
               <button className="text-sm">English</button>
-              <button className="rounded-full bg-gray-100 p-2">
-                {/* User icon placeholder */}
-              </button>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <button className="rounded-full bg-gray-100 p-2">
+                    <Avatar>
+                      <AvatarImage src="https://github.com/thedjpetersen.png" />
+                      <AvatarFallback>DP</AvatarFallback>
+                    </Avatar>
+                  </button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-[200px]">
+                  <DropdownMenuItem asChild>
+                    <a href="/account/profile" className="cursor-pointer">
+                      <div className="flex flex-col space-y-1">
+                        <span>My Profile</span>
+                        <span className="text-xs text-muted-foreground">
+                          thedjpetersen@gmail.com
+                        </span>
+                      </div>
+                    </a>
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem asChild>
+                    <a href="/account/home" className="cursor-pointer">
+                      Account Home
+                    </a>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <a href="/account/billing" className="cursor-pointer">
+                      Billing
+                    </a>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <a href="/account/appearance" className="cursor-pointer">
+                      Appearance
+                    </a>
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem className="cursor-pointer">
+                    Log Out
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
           </header>
 
@@ -186,14 +241,28 @@ function AppLayout() {
 
               {/* Account Management */}
               <Route path="/account">
-                <Route index element={<Navigate to="members" replace />} />
-                <Route path="members" element={<div>Members</div>} />
+                <Route index element={<Navigate to="home" replace />} />
+                <Route path="profile" element={<ProfileLayout />}>
+                  <Route index element={<PreferencesPage />} />
+                  <Route
+                    path="authentication"
+                    element={<AuthenticationPage />}
+                  />
+                  <Route path="tokens" element={<ProfileTokensPage />} />
+                  <Route
+                    path="tokens/create"
+                    element={<ProfileCreateTokenPage />}
+                  />
+                  <Route path="sessions" element={<SessionsPage />} />
+                </Route>
+                <Route path="home" element={<AccountHomePage />} />
+                <Route path="billing" element={<BillingPage />} />
+                <Route path="appearance" element={<AppearancePage />} />
                 <Route path="tokens">
                   <Route index element={<TokensPage />} />
                   <Route path="create" element={<CreateTokenPage />} />
                 </Route>
                 <Route path="audit" element={<div>Audit Log</div>} />
-                <Route path="billing" element={<div>Billing</div>} />
                 <Route path="config" element={<div>Configurations</div>} />
               </Route>
               <Route path="/notifications" element={<div>Notifications</div>} />
