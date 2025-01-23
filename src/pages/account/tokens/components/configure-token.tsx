@@ -11,7 +11,6 @@ import {
 import { PERMISSION_GROUPS } from "../permission-groups";
 import { type Policy } from "../types";
 import { useState, useEffect } from "react";
-import { PERMISSION_GROUP_TRANSLATION } from "../permission_group_translation";
 
 interface ConfigureTokenProps {
   tokenName: string;
@@ -113,10 +112,7 @@ export function ConfigureToken({
       ) {
         outputOptions.push({
           value: group.name,
-          label:
-            PERMISSION_GROUP_TRANSLATION[
-              `api_tokens.permission_${group.name}` as keyof typeof PERMISSION_GROUP_TRANSLATION
-            ] || group.name,
+          label: group.parsedName || group.name,
           type: group.type,
         });
       }

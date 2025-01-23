@@ -7,6 +7,7 @@ export const PERMISSION_GROUPS = [
     label: "aiaudit_read",
     type: "read",
     rowId: 1138,
+    parsedName: "AI Audit",
   },
   {
     id: "1ba6ab4cacdb454b913bbb93e1b8cb8c",
@@ -16,6 +17,7 @@ export const PERMISSION_GROUPS = [
     label: "aiaudit_write",
     type: "edit",
     rowId: 1139,
+    parsedName: "AI Audit",
   },
   {
     id: "4dc8917b4b40457d88d3035d5dadb054",
@@ -25,6 +27,7 @@ export const PERMISSION_GROUPS = [
     label: "aig_read",
     type: "read",
     rowId: 1140,
+    parsedName: "AI Gateway",
   },
   {
     id: "644535f4ed854494a59cb289d634b257",
@@ -34,6 +37,7 @@ export const PERMISSION_GROUPS = [
     label: "aig_run",
     type: "run",
     rowId: 1141,
+    parsedName: "AI Gateway",
   },
   {
     id: "6c8a3737f07f46369c1ea1f22138daaf",
@@ -43,6 +47,7 @@ export const PERMISSION_GROUPS = [
     label: "aig_write",
     type: "edit",
     rowId: 1142,
+    parsedName: "AI Gateway",
   },
   {
     id: "0cc3a61731504c89b99ec1be78b77aa0",
@@ -52,6 +57,7 @@ export const PERMISSION_GROUPS = [
     label: "api_tokens_read",
     type: "read",
     rowId: 1143,
+    parsedName: "API Tokens",
   },
   {
     id: "686d18d5ac6c441c867cbf6771e58a0a",
@@ -61,6 +67,7 @@ export const PERMISSION_GROUPS = [
     label: "api_tokens_write",
     type: "edit",
     rowId: 1144,
+    parsedName: "API Tokens",
   },
   {
     id: "eb258a38ea634c86a0c89da6b27cb6b6",
@@ -70,6 +77,7 @@ export const PERMISSION_GROUPS = [
     label: "zone_access_read",
     type: "read",
     rowId: 1145,
+    parsedName: "Access: Apps and Policies",
   },
   {
     id: "7ea222f6d5064cfa89ea366d7c1fee89",
@@ -79,6 +87,7 @@ export const PERMISSION_GROUPS = [
     label: "access_read",
     type: "read",
     rowId: 1146,
+    parsedName: "Access: Apps and Policies",
   },
   {
     id: "6db4e222e21248ac96a3f4c2a81e3b41",
@@ -89,6 +98,7 @@ export const PERMISSION_GROUPS = [
     label: "zone_access_revoke",
     type: "revoke",
     rowId: 1147,
+    parsedName: "Access: Apps and Policies",
   },
   {
     id: "6c9d1cfcfc6840a987d1b5bfb880a841",
@@ -99,6 +109,7 @@ export const PERMISSION_GROUPS = [
     label: "access_revoke",
     type: "revoke",
     rowId: 1148,
+    parsedName: "Access: Apps and Policies",
   },
   {
     id: "959972745952452f8be2452be8cbb9f2",
@@ -108,6 +119,7 @@ export const PERMISSION_GROUPS = [
     label: "zone_access_write",
     type: "edit",
     rowId: 1149,
+    parsedName: "Access: Apps and Policies",
   },
   {
     id: "1e13c5124ca64b72b1969a67e8829049",
@@ -117,6 +129,7 @@ export const PERMISSION_GROUPS = [
     label: "access_write",
     type: "edit",
     rowId: 1150,
+    parsedName: "Access: Apps and Policies",
   },
   {
     id: "b05b28e839c54467a7d6cba5d3abb5a3",
@@ -126,6 +139,7 @@ export const PERMISSION_GROUPS = [
     label: "access_audit_log_read",
     type: "read",
     rowId: 1151,
+    parsedName: "Access: Audit Logs",
   },
   {
     id: "4f3196a5c95747b6ad82e34e1d0a694f",
@@ -135,6 +149,7 @@ export const PERMISSION_GROUPS = [
     label: "access_certificate_read",
     type: "read",
     rowId: 1152,
+    parsedName: "Access: Mutual TLS Certificates",
   },
   {
     id: "29d3afbfd4054af9accdd1118815ed05",
@@ -144,6 +159,7 @@ export const PERMISSION_GROUPS = [
     label: "access_certificate_write",
     type: "edit",
     rowId: 1153,
+    parsedName: "Access: Mutual TLS Certificates",
   },
   {
     id: "08e61dabe81a422dab0dea6fdef1a98a",
@@ -153,6 +169,7 @@ export const PERMISSION_GROUPS = [
     label: "access_custom_page_read",
     type: "read",
     rowId: 1154,
+    parsedName: "Access: Custom Pages",
   },
   {
     id: "4e5fd8ac327b4a358e48c66fcbeb856d",
@@ -162,6 +179,7 @@ export const PERMISSION_GROUPS = [
     label: "access_custom_page_write",
     type: "edit",
     rowId: 1155,
+    parsedName: "Access: Custom Pages",
   },
   {
     id: "0f4841f80adb4bada5a09493300e7f8d",
@@ -171,6 +189,7 @@ export const PERMISSION_GROUPS = [
     label: "access_device_posture_read",
     type: "read",
     rowId: 1156,
+    parsedName: "Access: Device Posture",
   },
   {
     id: "2fc1072ee6b743828db668fcb3f9dee7",
@@ -180,6 +199,7 @@ export const PERMISSION_GROUPS = [
     label: "access_device_posture_write",
     type: "edit",
     rowId: 1157,
+    parsedName: "Access: Device Posture",
   },
   {
     id: "26bc23f853634eb4bff59983b9064fde",
@@ -189,6 +209,7 @@ export const PERMISSION_GROUPS = [
     label: "access_acct_read",
     type: "read",
     rowId: 1158,
+    parsedName: "Access: Organizations, Identity Providers, and Groups",
   },
   {
     id: "7121a0c7e9ed46e3829f9cca2bb572aa",
@@ -199,6 +220,7 @@ export const PERMISSION_GROUPS = [
     label: "access_acct_revoke",
     type: "revoke",
     rowId: 1159,
+    parsedName: "Access: Organizations, Identity Providers, and Groups",
   },
   {
     id: "bfe0d8686a584fa680f4c53b5eb0de6d",
@@ -208,6 +230,7 @@ export const PERMISSION_GROUPS = [
     label: "access_acct_write",
     type: "edit",
     rowId: 1160,
+    parsedName: "Access: Organizations, Identity Providers, and Groups",
   },
   {
     id: "de99c87e48d642ce8c985d027905b475",
@@ -217,6 +240,7 @@ export const PERMISSION_GROUPS = [
     label: "access_population_read",
     type: "read",
     rowId: 1161,
+    parsedName: "Access: Populations",
   },
   {
     id: "bc783549a3a741aaa10556faf8b485bb",
@@ -226,6 +250,7 @@ export const PERMISSION_GROUPS = [
     label: "access_population_write",
     type: "edit",
     rowId: 1162,
+    parsedName: "Access: Populations",
   },
   {
     id: "99ff99e4e30247a99d3777a8c4c18541",
@@ -236,6 +261,7 @@ export const PERMISSION_GROUPS = [
     label: "access_ssh_auditing_read",
     type: "read",
     rowId: 1163,
+    parsedName: "Access: SSH Auditing",
   },
   {
     id: "d30c9ad8b5224e7cb8d41bcb4757effc",
@@ -246,6 +272,7 @@ export const PERMISSION_GROUPS = [
     label: "access_ssh_auditing_write",
     type: "edit",
     rowId: 1164,
+    parsedName: "Access: SSH Auditing",
   },
   {
     id: "91f7ce32fa614d73b7e1fc8f0e78582b",
@@ -255,6 +282,7 @@ export const PERMISSION_GROUPS = [
     label: "access_service_token_read",
     type: "read",
     rowId: 1165,
+    parsedName: "Access: Service Tokens",
   },
   {
     id: "a1c0fec57cf94af79479a6d827fa518c",
@@ -264,6 +292,7 @@ export const PERMISSION_GROUPS = [
     label: "access_service_token_write",
     type: "edit",
     rowId: 1166,
+    parsedName: "Access: Service Tokens",
   },
   {
     id: "5e5d3e8efeec49f3afb67bafecbcd511",
@@ -274,6 +303,7 @@ export const PERMISSION_GROUPS = [
     label: "account_api_gateway_write",
     type: "edit",
     rowId: 1167,
+    parsedName: "API Gateway",
   },
   {
     id: "05a2a65760a546439ed29762b163cece",
@@ -284,6 +314,7 @@ export const PERMISSION_GROUPS = [
     label: "account_api_gateway_read",
     type: "read",
     rowId: 1168,
+    parsedName: "API Gateway",
   },
   {
     id: "eb56a6953c034b9d97dd838155666f06",
@@ -293,6 +324,7 @@ export const PERMISSION_GROUPS = [
     label: "account_api_tokens_read",
     type: "read",
     rowId: 1169,
+    parsedName: "API Tokens",
   },
   {
     id: "5bc3f8b21c554832afc660159ab75fa4",
@@ -302,6 +334,7 @@ export const PERMISSION_GROUPS = [
     label: "account_api_tokens_write",
     type: "edit",
     rowId: 1170,
+    parsedName: "API Tokens",
   },
   {
     id: "b89a480218d04ceb98b4fe57ca29dc1f",
@@ -311,6 +344,7 @@ export const PERMISSION_GROUPS = [
     label: "account_analytics_read",
     type: "read",
     rowId: 1171,
+    parsedName: "Account Analytics",
   },
   {
     id: "c57ea647ef654b47bc8944fa739b570d",
@@ -320,6 +354,7 @@ export const PERMISSION_GROUPS = [
     label: "account_custom_pages_read",
     type: "read",
     rowId: 1172,
+    parsedName: "Account Custom Pages",
   },
   {
     id: "8a9d35a7c8504208ad5c3e8d58e6162d",
@@ -329,6 +364,7 @@ export const PERMISSION_GROUPS = [
     label: "account_custom_pages_write",
     type: "edit",
     rowId: 1173,
+    parsedName: "Account Custom Pages",
   },
   {
     id: "cfa964bcdafc4ab39704e7476154e41b",
@@ -338,6 +374,7 @@ export const PERMISSION_GROUPS = [
     label: "account_dns_settings_read",
     type: "read",
     rowId: 1174,
+    parsedName: "Account DNS Settings",
   },
   {
     id: "dc44f27f48ab405392a5f69fe822bd01",
@@ -347,6 +384,7 @@ export const PERMISSION_GROUPS = [
     label: "account_dns_settings_write",
     type: "edit",
     rowId: 1175,
+    parsedName: "Account DNS Settings",
   },
   {
     id: "de7a688cc47d43bd9ea700b467a09c96",
@@ -356,6 +394,7 @@ export const PERMISSION_GROUPS = [
     label: "account_firewall_access_rules_read",
     type: "read",
     rowId: 1176,
+    parsedName: "Account Firewall Access Rules",
   },
   {
     id: "a416acf9ef5a4af19fb11ed3b96b1fe6",
@@ -365,6 +404,7 @@ export const PERMISSION_GROUPS = [
     label: "account_firewall_access_rules_write",
     type: "edit",
     rowId: 1177,
+    parsedName: "Account Firewall Access Rules",
   },
   {
     id: "4f1071168de8466e9808de86febfc516",
@@ -374,6 +414,7 @@ export const PERMISSION_GROUPS = [
     label: "account_rule_lists_read",
     type: "read",
     rowId: 1178,
+    parsedName: "Account Filter Lists",
   },
   {
     id: "2edbf20661fd4661b0fe10e9e12f485c",
@@ -383,6 +424,7 @@ export const PERMISSION_GROUPS = [
     label: "account_rule_lists_write",
     type: "edit",
     rowId: 1179,
+    parsedName: "Account Filter Lists",
   },
   {
     id: "fb39996ee9044d2a8725921e02744b39",
@@ -392,6 +434,7 @@ export const PERMISSION_GROUPS = [
     label: "account_rulesets_read",
     type: "read",
     rowId: 1180,
+    parsedName: "Account Rulesets",
   },
   {
     id: "56907406c3d548ed902070ec4df0e328",
@@ -401,6 +444,7 @@ export const PERMISSION_GROUPS = [
     label: "account_rulesets_write",
     type: "edit",
     rowId: 1181,
+    parsedName: "Account Rulesets",
   },
   {
     id: "c1fde68c7bcc44588cbb6ddbc16d6480",
@@ -411,6 +455,7 @@ export const PERMISSION_GROUPS = [
     label: "account_settings_read",
     type: "read",
     rowId: 1182,
+    parsedName: "Account Settings",
   },
   {
     id: "1af1fa2adc104452b74a9a3364202f20",
@@ -421,6 +466,7 @@ export const PERMISSION_GROUPS = [
     label: "account_settings_write",
     type: "edit",
     rowId: 1183,
+    parsedName: "Account Settings",
   },
   {
     id: "56b2af4817c84ad99187911dc3986c23",
@@ -430,6 +476,7 @@ export const PERMISSION_GROUPS = [
     label: "account_waf_read",
     type: "read",
     rowId: 1184,
+    parsedName: "Account WAF",
   },
   {
     id: "cde8c82463b6414ca06e46b9633f52a6",
@@ -439,6 +486,7 @@ export const PERMISSION_GROUPS = [
     label: "account_waf_write",
     type: "edit",
     rowId: 1185,
+    parsedName: "Account WAF",
   },
   {
     id: "a7a233f9604845c787d4c8c39ac09c21",
@@ -449,6 +497,7 @@ export const PERMISSION_GROUPS = [
     label: "account_ssl_and_certificates_read",
     type: "read",
     rowId: 1186,
+    parsedName: "Account: SSL and Certificates",
   },
   {
     id: "db37e5f1cb1a4e1aabaef8deaea43575",
@@ -459,6 +508,7 @@ export const PERMISSION_GROUPS = [
     label: "account_ssl_and_certificates_write",
     type: "edit",
     rowId: 1187,
+    parsedName: "Account: SSL and Certificates",
   },
   {
     id: "d07270cea5484b08ad6440c985af2148",
@@ -468,6 +518,7 @@ export const PERMISSION_GROUPS = [
     label: "address_maps_read",
     type: "read",
     rowId: 1188,
+    parsedName: "Address Maps",
   },
   {
     id: "6ffe7f4299db4d4cb54f64e0eb12a456",
@@ -477,6 +528,7 @@ export const PERMISSION_GROUPS = [
     label: "address_maps_write",
     type: "edit",
     rowId: 1189,
+    parsedName: "Address Maps",
   },
   {
     id: "f3604047d46144d2a3e9cf4ac99d7f16",
@@ -486,6 +538,7 @@ export const PERMISSION_GROUPS = [
     label: "request_tracer_read",
     type: "read",
     rowId: 1190,
+    parsedName: "Allow Request Tracer",
   },
   {
     id: "9c88f9c5bce24ce7af9a958ba9c504db",
@@ -495,6 +548,7 @@ export const PERMISSION_GROUPS = [
     label: "analytics_read",
     type: "read",
     rowId: 1191,
+    parsedName: "Analytics",
   },
   {
     id: "094547ab6e77498c8c4dfa87fadd5c51",
@@ -504,6 +558,7 @@ export const PERMISSION_GROUPS = [
     label: "apps_write",
     type: "edit",
     rowId: 1192,
+    parsedName: "Apps",
   },
   {
     id: "efea2ab8357b47888938f101ae5e053f",
@@ -513,6 +568,7 @@ export const PERMISSION_GROUPS = [
     label: "argotunnel_read",
     type: "read",
     rowId: 1193,
+    parsedName: "Cloudflare Tunnel",
   },
   {
     id: "c07321b023e944ff818fec44d8203567",
@@ -522,6 +578,7 @@ export const PERMISSION_GROUPS = [
     label: "argotunnel_write",
     type: "edit",
     rowId: 1194,
+    parsedName: "Cloudflare Tunnel",
   },
   {
     id: "7cf72faf220841aabcfdfab81c43c4f6",
@@ -532,6 +589,7 @@ export const PERMISSION_GROUPS = [
     label: "billing_read",
     type: "read",
     rowId: 1195,
+    parsedName: "Billing",
   },
   {
     id: "6c80e02421494afc9ae14414ed442632",
@@ -542,6 +600,7 @@ export const PERMISSION_GROUPS = [
     label: "billing_write",
     type: "edit",
     rowId: 1196,
+    parsedName: "Billing",
   },
   {
     id: "51be404b56244056868226263a44a632",
@@ -551,6 +610,7 @@ export const PERMISSION_GROUPS = [
     label: "bot_management_feedback_read",
     type: "read",
     rowId: 1197,
+    parsedName: "Bot Management Feedback",
   },
   {
     id: "2002629aaff0454085bf5a201ed70a72",
@@ -560,6 +620,7 @@ export const PERMISSION_GROUPS = [
     label: "bot_management_feedback_write",
     type: "edit",
     rowId: 1198,
+    parsedName: "Bot Management Feedback",
   },
   {
     id: "07bea2220b2343fa9fae15656c0d8e88",
@@ -569,6 +630,7 @@ export const PERMISSION_GROUPS = [
     label: "bot_management_read",
     type: "read",
     rowId: 1199,
+    parsedName: "Bot Management",
   },
   {
     id: "3b94c49258ec4573b06d51d99b6416c0",
@@ -578,6 +640,7 @@ export const PERMISSION_GROUPS = [
     label: "bot_management_write",
     type: "edit",
     rowId: 1200,
+    parsedName: "Bot Management",
   },
   {
     id: "374b03fa229f4eb6b011bb1cd7f235ee",
@@ -587,6 +650,7 @@ export const PERMISSION_GROUPS = [
     label: "browser_rendering_read",
     type: "read",
     rowId: 1201,
+    parsedName: "Browser Rendering",
   },
   {
     id: "adddda876faa4a0590f1b23a038976e4",
@@ -596,6 +660,7 @@ export const PERMISSION_GROUPS = [
     label: "browser_rendering_write",
     type: "edit",
     rowId: 1202,
+    parsedName: "Browser Rendering",
   },
   {
     id: "e17beae8b8cb423a99b1730f21238bed",
@@ -605,6 +670,7 @@ export const PERMISSION_GROUPS = [
     label: "cache_purge",
     type: "purge",
     rowId: 1203,
+    parsedName: "Cache Purge",
   },
   {
     id: "3245da1cf36c45c3847bb9b483c62f97",
@@ -614,6 +680,7 @@ export const PERMISSION_GROUPS = [
     label: "cache_settings_read",
     type: "read",
     rowId: 1204,
+    parsedName: "Cache Rules",
   },
   {
     id: "9ff81cbbe65c400b97d92c3c1033cab6",
@@ -623,6 +690,7 @@ export const PERMISSION_GROUPS = [
     label: "cache_settings_write",
     type: "edit",
     rowId: 1205,
+    parsedName: "Cache Rules",
   },
   {
     id: "686ab9a8b3854f25a1474f302d14b68d",
@@ -632,6 +700,7 @@ export const PERMISSION_GROUPS = [
     label: "calls_read",
     type: "read",
     rowId: 1206,
+    parsedName: "Cloudflare Calls",
   },
   {
     id: "b711942448db4b0aace44d1312f9fdb0",
@@ -641,6 +710,7 @@ export const PERMISSION_GROUPS = [
     label: "calls_write",
     type: "edit",
     rowId: 1207,
+    parsedName: "Cloudflare Calls",
   },
   {
     id: "9ade9cfc8f8949bcb2371be2f0ec8db1",
@@ -650,6 +720,7 @@ export const PERMISSION_GROUPS = [
     label: "chinanetwork_steering_read",
     type: "read",
     rowId: 1208,
+    parsedName: "China Network Steering",
   },
   {
     id: "c6f6338ceae545d0b90daaa1fed855e6",
@@ -659,6 +730,7 @@ export const PERMISSION_GROUPS = [
     label: "chinanetwork_steering_write",
     type: "edit",
     rowId: 1209,
+    parsedName: "China Network Steering",
   },
   {
     id: "0661ff47aa3a4786beab3b8128e0cd24",
@@ -668,6 +740,7 @@ export const PERMISSION_GROUPS = [
     label: "cloud_connector_read",
     type: "read",
     rowId: 1210,
+    parsedName: "Cloud Connector",
   },
   {
     id: "eafd71286d0e4fdca404a7b4d203c5c9",
@@ -677,6 +750,7 @@ export const PERMISSION_GROUPS = [
     label: "cloud_connector_write",
     type: "edit",
     rowId: 1211,
+    parsedName: "Cloud Connector",
   },
   {
     id: "9e5a9912439940fca5898b5b8dc6d1a5",
@@ -686,6 +760,7 @@ export const PERMISSION_GROUPS = [
     label: "cloud_email_security_read",
     type: "read",
     rowId: 1212,
+    parsedName: "Email Security",
   },
   {
     id: "a3567c13e074447fb101babac3463566",
@@ -695,6 +770,7 @@ export const PERMISSION_GROUPS = [
     label: "cloud_email_security_write",
     type: "edit",
     rowId: 1213,
+    parsedName: "Email Security",
   },
   {
     id: "65ec50cbde3d4c838bbe7500024d5745",
@@ -704,6 +780,7 @@ export const PERMISSION_GROUPS = [
     label: "cloudchamber_read",
     type: "read",
     rowId: 1214,
+    parsedName: "Cloudchamber",
   },
   {
     id: "26ce6c7d18a346528e7b905d5e269866",
@@ -713,6 +790,7 @@ export const PERMISSION_GROUPS = [
     label: "cloudchamber_write",
     type: "edit",
     rowId: 1215,
+    parsedName: "Cloudchamber",
   },
   {
     id: "00ec19a0d4fa4e4aae23b50bf04c0630",
@@ -723,6 +801,7 @@ export const PERMISSION_GROUPS = [
     label: "teams_cds_compute_account_read",
     type: "read",
     rowId: 1216,
+    parsedName: "Cloudflare CDS Compute Account",
   },
   {
     id: "9bf884ba0de445dab37ea4a3e1a2c9f1",
@@ -733,6 +812,7 @@ export const PERMISSION_GROUPS = [
     label: "teams_cds_compute_account_write",
     type: "edit",
     rowId: 1217,
+    parsedName: "Cloudflare CDS Compute Account",
   },
   {
     id: "3a1e1ef09dd34271bb44fc4c6a419952",
@@ -742,6 +822,7 @@ export const PERMISSION_GROUPS = [
     label: "teams_dex",
     type: "dex",
     rowId: 1218,
+    parsedName: "Zero Trust",
   },
   {
     id: "3b376e0aa52c41cbb6afc9cab945afa8",
@@ -751,6 +832,7 @@ export const PERMISSION_GROUPS = [
     label: "teams_dex_read",
     type: "read",
     rowId: 1219,
+    parsedName: "Zero Trust",
   },
   {
     id: "92c8dcd551cc42a6a57a54e8f8d3f3e3",
@@ -760,6 +842,7 @@ export const PERMISSION_GROUPS = [
     label: "teams_dex_write",
     type: "edit",
     rowId: 1220,
+    parsedName: "Zero Trust",
   },
   {
     id: "07cf1c1952a84b13b2cd542f3d2f29ab",
@@ -769,6 +852,7 @@ export const PERMISSION_GROUPS = [
     label: "teams_connectors_read",
     type: "read",
     rowId: 1221,
+    parsedName: "Cloudflare One Connectors",
   },
   {
     id: "a7030c9c98d544e092d8b099fabb1f06",
@@ -778,6 +862,7 @@ export const PERMISSION_GROUPS = [
     label: "teams_connectors_write",
     type: "edit",
     rowId: 1222,
+    parsedName: "Cloudflare One Connectors",
   },
   {
     id: "4f1276d1e7e34c32a5012bbe02ece86d",
@@ -787,6 +872,7 @@ export const PERMISSION_GROUPS = [
     label: "teams_networks_read",
     type: "read",
     rowId: 1223,
+    parsedName: "Cloudflare One Networks",
   },
   {
     id: "e2980d9241cf4939bbbd74fdc43b9651",
@@ -796,6 +882,7 @@ export const PERMISSION_GROUPS = [
     label: "teams_networks_write",
     type: "edit",
     rowId: 1224,
+    parsedName: "Cloudflare One Networks",
   },
   {
     id: "1cd960c063a0448481343372c963d8c7",
@@ -805,6 +892,7 @@ export const PERMISSION_GROUPS = [
     label: "teams_connector_warp_read",
     type: "read",
     rowId: 1225,
+    parsedName: "Cloudflare One Connector: WARP",
   },
   {
     id: "5b5c774a5d174ca88d046c8889648b3f",
@@ -814,6 +902,7 @@ export const PERMISSION_GROUPS = [
     label: "teams_connector_warp_write",
     type: "edit",
     rowId: 1226,
+    parsedName: "Cloudflare One Connector: WARP",
   },
   {
     id: "c1968d31028d4239976ec3bc4750bbf6",
@@ -823,6 +912,7 @@ export const PERMISSION_GROUPS = [
     label: "teams_connector_cloudflared_read",
     type: "read",
     rowId: 1227,
+    parsedName: "Cloudflare One Connector: cloudflared",
   },
   {
     id: "037b9e348b3b42d4b46ea2fcb1cfb3e7",
@@ -832,6 +922,7 @@ export const PERMISSION_GROUPS = [
     label: "teams_connector_cloudflared_write",
     type: "edit",
     rowId: 1228,
+    parsedName: "Cloudflare One Connector: cloudflared",
   },
   {
     id: "f5d857f67f144e3c8bacea88c17d4a13",
@@ -841,6 +932,7 @@ export const PERMISSION_GROUPS = [
     label: "teams_pii_read",
     type: "read",
     rowId: 1229,
+    parsedName: "Zero Trust: PII",
   },
   {
     id: "cf9353ed7978436e8fb20c03fce26449",
@@ -850,6 +942,7 @@ export const PERMISSION_GROUPS = [
     label: "cloudforce_one_read",
     type: "read",
     rowId: 1230,
+    parsedName: "Cloudforce One",
   },
   {
     id: "677767156f294485b497a8f103172e7d",
@@ -859,6 +952,7 @@ export const PERMISSION_GROUPS = [
     label: "cloudforce_one_write",
     type: "edit",
     rowId: 1231,
+    parsedName: "Cloudforce One",
   },
   {
     id: "20e5ea084b2f491c86b8d8d90abff905",
@@ -868,6 +962,7 @@ export const PERMISSION_GROUPS = [
     label: "config_settings_read",
     type: "read",
     rowId: 1232,
+    parsedName: "Config Rules",
   },
   {
     id: "06f0526e6e464647bd61b63c54935235",
@@ -877,6 +972,7 @@ export const PERMISSION_GROUPS = [
     label: "config_settings_write",
     type: "edit",
     rowId: 1233,
+    parsedName: "Config Rules",
   },
   {
     id: "eeffa4d16812430cb4a0ae9e7f46fc24",
@@ -886,6 +982,7 @@ export const PERMISSION_GROUPS = [
     label: "constellation_read",
     type: "read",
     rowId: 1234,
+    parsedName: "Constellation",
   },
   {
     id: "7c81856725af47ce89a790d5fb36f362",
@@ -896,6 +993,7 @@ export const PERMISSION_GROUPS = [
     label: "constellation_write",
     type: "edit",
     rowId: 1235,
+    parsedName: "Constellation",
   },
   {
     id: "a2b55cd504d44ef18b7ba6a7f2b8fbb1",
@@ -905,6 +1003,7 @@ export const PERMISSION_GROUPS = [
     label: "custom_errors_read",
     type: "read",
     rowId: 1236,
+    parsedName: "Custom Error Rules",
   },
   {
     id: "a9dba34cf5814d4ab2007b4ada0045bd",
@@ -914,6 +1013,7 @@ export const PERMISSION_GROUPS = [
     label: "custom_errors_write",
     type: "edit",
     rowId: 1237,
+    parsedName: "Custom Error Rules",
   },
   {
     id: "a2431ca73b7d41f99c53303027392586",
@@ -923,6 +1023,7 @@ export const PERMISSION_GROUPS = [
     label: "custom_pages_read",
     type: "read",
     rowId: 1238,
+    parsedName: "Custom Pages",
   },
   {
     id: "c244ec076974430a88bda1cdd992d0d9",
@@ -932,6 +1033,7 @@ export const PERMISSION_GROUPS = [
     label: "custom_pages_write",
     type: "edit",
     rowId: 1239,
+    parsedName: "Custom Pages",
   },
   {
     id: "192192df92ee43ac90f2aeeffce67e35",
@@ -941,6 +1043,7 @@ export const PERMISSION_GROUPS = [
     label: "d1_read",
     type: "read",
     rowId: 1240,
+    parsedName: "D1",
   },
   {
     id: "09b2857d1c31407795e75e3fed8617a1",
@@ -950,6 +1053,7 @@ export const PERMISSION_GROUPS = [
     label: "d1_write",
     type: "edit",
     rowId: 1241,
+    parsedName: "D1",
   },
   {
     id: "dee7c22a57674abea8f942110b094717",
@@ -959,6 +1063,7 @@ export const PERMISSION_GROUPS = [
     label: "ddos_botnet_feed_read",
     type: "read",
     rowId: 1242,
+    parsedName: "DDoS Botnet Feed",
   },
   {
     id: "0caa90c9b186447397c8b00358d34a76",
@@ -968,6 +1073,7 @@ export const PERMISSION_GROUPS = [
     label: "ddos_botnet_feed_write",
     type: "edit",
     rowId: 1243,
+    parsedName: "DDoS Botnet Feed",
   },
   {
     id: "af1c363c35ba45b9a8c682ae50eb3f99",
@@ -977,6 +1083,7 @@ export const PERMISSION_GROUPS = [
     label: "ddos_protection_read",
     type: "read",
     rowId: 1244,
+    parsedName: "DDoS Protection",
   },
   {
     id: "d44ed14bcc4340b194d3824d60edad3f",
@@ -986,6 +1093,7 @@ export const PERMISSION_GROUPS = [
     label: "ddos_protection_write",
     type: "edit",
     rowId: 1245,
+    parsedName: "DDoS Protection",
   },
   {
     id: "5f48a472240a4b489a21d43bd19a06e1",
@@ -995,6 +1103,7 @@ export const PERMISSION_GROUPS = [
     label: "dns_firewall_read",
     type: "read",
     rowId: 1246,
+    parsedName: "DNS Firewall",
   },
   {
     id: "da6d2d6f2ec8442eaadda60d13f42bca",
@@ -1004,6 +1113,7 @@ export const PERMISSION_GROUPS = [
     label: "dns_firewall_write",
     type: "edit",
     rowId: 1247,
+    parsedName: "DNS Firewall",
   },
   {
     id: "82e64a83756745bbbb1c9c2701bf816b",
@@ -1013,6 +1123,7 @@ export const PERMISSION_GROUPS = [
     label: "dns_read",
     type: "read",
     rowId: 1248,
+    parsedName: "DNS",
   },
   {
     id: "95d69e8d6d5144bfb0923667355d9f11",
@@ -1022,6 +1133,7 @@ export const PERMISSION_GROUPS = [
     label: "dns_view_read",
     type: "read",
     rowId: 1249,
+    parsedName: "DNS Views",
   },
   {
     id: "5b7aedd821a548b9bf5a2acabbce98c7",
@@ -1031,6 +1143,7 @@ export const PERMISSION_GROUPS = [
     label: "dns_view_write",
     type: "edit",
     rowId: 1250,
+    parsedName: "DNS Views",
   },
   {
     id: "4755a26eedb94da69e1066d98aa820be",
@@ -1040,6 +1153,7 @@ export const PERMISSION_GROUPS = [
     label: "dns_write",
     type: "edit",
     rowId: 1251,
+    parsedName: "DNS",
   },
   {
     id: "e199d584e69344eba202452019deafe3",
@@ -1049,6 +1163,7 @@ export const PERMISSION_GROUPS = [
     label: "zone_disable_esc_read",
     type: "read",
     rowId: 1252,
+    parsedName: "Disable ESC",
   },
   {
     id: "29eefa0805f94fdfae2b058b5b52f319",
@@ -1058,6 +1173,7 @@ export const PERMISSION_GROUPS = [
     label: "account_disable_esc_read",
     type: "read",
     rowId: 1253,
+    parsedName: "Disable ESC",
   },
   {
     id: "9110d9dd749e464fb9f3961a2064efc5",
@@ -1067,6 +1183,7 @@ export const PERMISSION_GROUPS = [
     label: "zone_disable_esc_write",
     type: "edit",
     rowId: 1254,
+    parsedName: "Disable ESC",
   },
   {
     id: "18555e39c5ba40d284dde87eda845a90",
@@ -1076,6 +1193,7 @@ export const PERMISSION_GROUPS = [
     label: "account_disable_esc_write",
     type: "edit",
     rowId: 1255,
+    parsedName: "Disable ESC",
   },
   {
     id: "f0235726de25444a84f704b7c93afadf",
@@ -1086,6 +1204,7 @@ export const PERMISSION_GROUPS = [
     label: "api_gateway_write",
     type: "edit",
     rowId: 1256,
+    parsedName: "API Gateway",
   },
   {
     id: "6ced5d0d69b1422396909a62c38ab41b",
@@ -1096,6 +1215,7 @@ export const PERMISSION_GROUPS = [
     label: "api_gateway_read",
     type: "read",
     rowId: 1257,
+    parsedName: "API Gateway",
   },
   {
     id: "6134079371904d8ebd77931c8ca07e50",
@@ -1105,6 +1225,7 @@ export const PERMISSION_GROUPS = [
     label: "domain_page_shield",
     type: "shield",
     rowId: 1258,
+    parsedName: "Page Shield",
   },
   {
     id: "945315185a8f40518bf3e9e6d0bee126",
@@ -1114,6 +1235,7 @@ export const PERMISSION_GROUPS = [
     label: "domain_page_shield_read",
     type: "read",
     rowId: 1259,
+    parsedName: "Page Shield",
   },
   {
     id: "d8e12db741544d1586ec1d6f5d3c7786",
@@ -1123,6 +1245,7 @@ export const PERMISSION_GROUPS = [
     label: "dynamic_redirect_read",
     type: "read",
     rowId: 1260,
+    parsedName: "Single Redirect",
   },
   {
     id: "74e1036f577a48528b78d2413b40538d",
@@ -1132,6 +1255,7 @@ export const PERMISSION_GROUPS = [
     label: "dynamic_redirect_write",
     type: "edit",
     rowId: 1261,
+    parsedName: "Single Redirect",
   },
   {
     id: "5272e56105d04b5897466995b9bd4643",
@@ -1141,6 +1265,7 @@ export const PERMISSION_GROUPS = [
     label: "email_routing_address_read",
     type: "read",
     rowId: 1262,
+    parsedName: "Email Routing Addresses",
   },
   {
     id: "e4589eb09e63436686cd64252a3aebeb",
@@ -1150,6 +1275,7 @@ export const PERMISSION_GROUPS = [
     label: "email_routing_address_write",
     type: "edit",
     rowId: 1263,
+    parsedName: "Email Routing Addresses",
   },
   {
     id: "1b600d9d8062443e986a973f097e728a",
@@ -1159,6 +1285,7 @@ export const PERMISSION_GROUPS = [
     label: "email_routing_rule_read",
     type: "read",
     rowId: 1264,
+    parsedName: "Email Routing Rules",
   },
   {
     id: "79b3ec0d10ce4148a8f8bdc0cc5f97f2",
@@ -1168,6 +1295,7 @@ export const PERMISSION_GROUPS = [
     label: "email_routing_rule_write",
     type: "edit",
     rowId: 1265,
+    parsedName: "Email Routing Rules",
   },
   {
     id: "1047880d37b649b49db4a504a245896f",
@@ -1177,6 +1305,7 @@ export const PERMISSION_GROUPS = [
     label: "email_security_dmarcreports_read",
     type: "read",
     rowId: 1266,
+    parsedName: "Dmarc Management",
   },
   {
     id: "2eee71c9364c4cacaf469e8370f09056",
@@ -1186,6 +1315,7 @@ export const PERMISSION_GROUPS = [
     label: "email_security_dmarcreports_write",
     type: "edit",
     rowId: 1267,
+    parsedName: "Dmarc Management",
   },
   {
     id: "4ec32dfcb35641c5bb32d5ef1ab963b4",
@@ -1195,6 +1325,7 @@ export const PERMISSION_GROUPS = [
     label: "firewall_services_read",
     type: "read",
     rowId: 1268,
+    parsedName: "Firewall Services",
   },
   {
     id: "43137f8d07884d3198dc0ee77ca6e79b",
@@ -1204,6 +1335,7 @@ export const PERMISSION_GROUPS = [
     label: "firewall_services_write",
     type: "edit",
     rowId: 1269,
+    parsedName: "Firewall Services",
   },
   {
     id: "0d24e472a9654642a97df736e8b0d980",
@@ -1213,6 +1345,7 @@ export const PERMISSION_GROUPS = [
     label: "fraud_detection_read",
     type: "read",
     rowId: 1270,
+    parsedName: "Fraud Detection",
   },
   {
     id: "685f9605fd4e44ec937b6a0db658e629",
@@ -1222,6 +1355,7 @@ export const PERMISSION_GROUPS = [
     label: "fraud_detection_write",
     type: "edit",
     rowId: 1271,
+    parsedName: "Fraud Detection",
   },
   {
     id: "6b60a5a87cae475da7e76e77e4209dd5",
@@ -1231,6 +1365,7 @@ export const PERMISSION_GROUPS = [
     label: "http_applications_read",
     type: "read",
     rowId: 1272,
+    parsedName: "HTTP Applications",
   },
   {
     id: "4736c02a9f224c8196ae5b127beae78c",
@@ -1240,6 +1375,7 @@ export const PERMISSION_GROUPS = [
     label: "http_applications_write",
     type: "edit",
     rowId: 1273,
+    parsedName: "HTTP Applications",
   },
   {
     id: "c49f8d15f9f44885a544d945ef5aa6ae",
@@ -1249,6 +1385,7 @@ export const PERMISSION_GROUPS = [
     label: "http_ddos_managed_ruleset_read",
     type: "read",
     rowId: 1274,
+    parsedName: "HTTP DDoS Managed Ruleset",
   },
   {
     id: "b88a3aa889474524bccea5cf18f122bf",
@@ -1258,6 +1395,7 @@ export const PERMISSION_GROUPS = [
     label: "http_ddos_managed_ruleset_write",
     type: "edit",
     rowId: 1275,
+    parsedName: "HTTP DDoS Managed Ruleset",
   },
   {
     id: "fac65912d42144aa86b7dd33281bf79e",
@@ -1267,6 +1405,7 @@ export const PERMISSION_GROUPS = [
     label: "healthcheck_read",
     type: "read",
     rowId: 1276,
+    parsedName: "Health Checks",
   },
   {
     id: "e0dc25a0fbdf4286b1ea100e3256b0e3",
@@ -1276,6 +1415,7 @@ export const PERMISSION_GROUPS = [
     label: "healthcheck_write",
     type: "edit",
     rowId: 1277,
+    parsedName: "Health Checks",
   },
   {
     id: "4d62ccf834df44808bc9283d65c4e4e9",
@@ -1285,6 +1425,7 @@ export const PERMISSION_GROUPS = [
     label: "query_cache_read",
     type: "read",
     rowId: 1278,
+    parsedName: "Hyperdrive",
   },
   {
     id: "721b2f51fba74871bd361de65aeb7e03",
@@ -1294,6 +1435,7 @@ export const PERMISSION_GROUPS = [
     label: "query_cache_write",
     type: "edit",
     rowId: 1279,
+    parsedName: "Hyperdrive",
   },
   {
     id: "212c9ff247b9406d990c017482afb3a5",
@@ -1303,6 +1445,7 @@ export const PERMISSION_GROUPS = [
     label: "iot_read",
     type: "read",
     rowId: 1280,
+    parsedName: "IOT",
   },
   {
     id: "865ebd55bc6d4b109de6813eccfefd13",
@@ -1312,6 +1455,7 @@ export const PERMISSION_GROUPS = [
     label: "iot_write",
     type: "edit",
     rowId: 1281,
+    parsedName: "IOT",
   },
   {
     id: "e763fae6ee95443b8f56f19213c5f2a5",
@@ -1321,6 +1465,7 @@ export const PERMISSION_GROUPS = [
     label: "ip_prefix_bgp_on_demand_read",
     type: "read",
     rowId: 1282,
+    parsedName: "IP Prefixes: BGP On Demand",
   },
   {
     id: "2ae23e4939d54074b7d252d27ce75a77",
@@ -1330,6 +1475,7 @@ export const PERMISSION_GROUPS = [
     label: "ip_prefix_bgp_on_demand_write",
     type: "edit",
     rowId: 1283,
+    parsedName: "IP Prefixes: BGP On Demand",
   },
   {
     id: "27beb7f8333b41e2b946f0e23cd8091e",
@@ -1339,6 +1485,7 @@ export const PERMISSION_GROUPS = [
     label: "ip_prefix_read",
     type: "read",
     rowId: 1284,
+    parsedName: "IP Prefixes",
   },
   {
     id: "92b8234e99f64e05bbbc59e1dc0f76b6",
@@ -1348,6 +1495,7 @@ export const PERMISSION_GROUPS = [
     label: "ip_prefix_write",
     type: "edit",
     rowId: 1285,
+    parsedName: "IP Prefixes",
   },
   {
     id: "0cf6473ad41449e7b7b743d14fc20c60",
@@ -1357,6 +1505,7 @@ export const PERMISSION_GROUPS = [
     label: "images_read",
     type: "read",
     rowId: 1286,
+    parsedName: "Cloudflare Images",
   },
   {
     id: "618ec6c64a3a42f8b08bdcb147ded4e4",
@@ -1366,6 +1515,7 @@ export const PERMISSION_GROUPS = [
     label: "images_write",
     type: "edit",
     rowId: 1287,
+    parsedName: "Cloudflare Images",
   },
   {
     id: "c6f97eeee13345db8cc00af0953a42de",
@@ -1375,6 +1525,7 @@ export const PERMISSION_GROUPS = [
     label: "integration_write",
     type: "edit",
     rowId: 1288,
+    parsedName: "Integrations",
   },
   {
     id: "df1577df30ee46268f9470952d7b0cdf",
@@ -1384,6 +1535,7 @@ export const PERMISSION_GROUPS = [
     label: "intel_read",
     type: "read",
     rowId: 1289,
+    parsedName: "Intel",
   },
   {
     id: "92209474242d459690e2cdb1985eaa6c",
@@ -1393,6 +1545,7 @@ export const PERMISSION_GROUPS = [
     label: "intel_write",
     type: "edit",
     rowId: 1290,
+    parsedName: "Intel",
   },
   {
     id: "4657621393f94f83b8ef94adba382e48",
@@ -1402,6 +1555,7 @@ export const PERMISSION_GROUPS = [
     label: "l4_ddos_managed_ruleset_read",
     type: "read",
     rowId: 1291,
+    parsedName: "L3/4 DDoS Managed Ruleset",
   },
   {
     id: "7a4c3574054a4d0ba7c692893ba8bdd4",
@@ -1411,6 +1565,7 @@ export const PERMISSION_GROUPS = [
     label: "l4_ddos_managed_ruleset_write",
     type: "edit",
     rowId: 1292,
+    parsedName: "L3/4 DDoS Managed Ruleset",
   },
   {
     id: "59059f0c977b44f8b1c18e0aaf91c369",
@@ -1421,6 +1576,7 @@ export const PERMISSION_GROUPS = [
     label: "load_balancers_account_read",
     type: "read",
     rowId: 1293,
+    parsedName: "Load Balancing: Account Load Balancers",
   },
   {
     id: "419ec42810af4659ade77716dbe47bc6",
@@ -1431,6 +1587,7 @@ export const PERMISSION_GROUPS = [
     label: "load_balancers_account_write",
     type: "edit",
     rowId: 1294,
+    parsedName: "Load Balancing: Account Load Balancers",
   },
   {
     id: "e9a975f628014f1d85b723993116f7d5",
@@ -1441,6 +1598,7 @@ export const PERMISSION_GROUPS = [
     label: "load_balancers_read",
     type: "read",
     rowId: 1295,
+    parsedName: "Load Balancers",
   },
   {
     id: "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
@@ -1451,6 +1609,7 @@ export const PERMISSION_GROUPS = [
     label: "load_balancers_write",
     type: "edit",
     rowId: 1296,
+    parsedName: "Load Balancers",
   },
   {
     id: "9d24387c6e8544e2bc4024a03991339f",
@@ -1460,6 +1619,7 @@ export const PERMISSION_GROUPS = [
     label: "load_balancing_monitors_and_pools_read",
     type: "read",
     rowId: 1297,
+    parsedName: "Load Balancing: Monitors And Pools",
   },
   {
     id: "d2a1802cc9a34e30852f8b33869b2f3c",
@@ -1469,6 +1629,7 @@ export const PERMISSION_GROUPS = [
     label: "load_balancing_monitors_and_pools_write",
     type: "edit",
     rowId: 1298,
+    parsedName: "Load Balancing: Monitors And Pools",
   },
   {
     id: "6a315a56f18441e59ed03352369ae956",
@@ -1478,6 +1639,7 @@ export const PERMISSION_GROUPS = [
     label: "account_logs_read",
     type: "read",
     rowId: 1299,
+    parsedName: "Account Logs",
   },
   {
     id: "c4a30cd58c5d42619c86a3c36c441e2d",
@@ -1487,6 +1649,7 @@ export const PERMISSION_GROUPS = [
     label: "logs_read",
     type: "read",
     rowId: 1300,
+    parsedName: "Logs",
   },
   {
     id: "96163bd1b0784f62b3e44ed8c2ab1eb6",
@@ -1496,6 +1659,7 @@ export const PERMISSION_GROUPS = [
     label: "account_logs_write",
     type: "edit",
     rowId: 1301,
+    parsedName: "Account Logs",
   },
   {
     id: "3e0b5820118e47f3922f7c989e673882",
@@ -1505,6 +1669,7 @@ export const PERMISSION_GROUPS = [
     label: "logs_write",
     type: "edit",
     rowId: 1302,
+    parsedName: "Logs",
   },
   {
     id: "3a46c728a0a040d5a65cd8e2f3bc6935",
@@ -1514,6 +1679,7 @@ export const PERMISSION_GROUPS = [
     label: "pcaps_api_read",
     type: "read",
     rowId: 1303,
+    parsedName: "Magic Firewall Packet Captures",
   },
   {
     id: "4ea7d6421801452dbf07cef853a5ef39",
@@ -1523,6 +1689,7 @@ export const PERMISSION_GROUPS = [
     label: "pcaps_api_write",
     type: "edit",
     rowId: 1304,
+    parsedName: "Magic Firewall Packet Captures",
   },
   {
     id: "02b71f12bb0748e9af8126494e181342",
@@ -1532,6 +1699,7 @@ export const PERMISSION_GROUPS = [
     label: "magic_firewall_read",
     type: "read",
     rowId: 1305,
+    parsedName: "Magic Firewall",
   },
   {
     id: "8bd1dac84d3d43e7bfb43145f010a15c",
@@ -1541,6 +1709,7 @@ export const PERMISSION_GROUPS = [
     label: "magic_firewall_write",
     type: "edit",
     rowId: 1306,
+    parsedName: "Magic Firewall",
   },
   {
     id: "8e6ed1ef6e864ad0ae477ceffa5aa5eb",
@@ -1550,6 +1719,7 @@ export const PERMISSION_GROUPS = [
     label: "fbm_admin",
     type: "admin",
     rowId: 1307,
+    parsedName: "Magic Network Monitoring",
   },
   {
     id: "3d85e9514f944bb4912c5871d92e5af5",
@@ -1559,6 +1729,7 @@ export const PERMISSION_GROUPS = [
     label: "fbm_read",
     type: "read",
     rowId: 1308,
+    parsedName: "Magic Network Monitoring",
   },
   {
     id: "09c77baecb6341a2b1ca2c62b658d290",
@@ -1569,6 +1740,7 @@ export const PERMISSION_GROUPS = [
     label: "fbm_write",
     type: "edit",
     rowId: 1309,
+    parsedName: "Magic Network Monitoring",
   },
   {
     id: "967ecf860a244dd1911a0331a0af582a",
@@ -1579,6 +1751,7 @@ export const PERMISSION_GROUPS = [
     label: "magic_transit_read",
     type: "read",
     rowId: 1310,
+    parsedName: "Magic Transit",
   },
   {
     id: "0bc09a3cd4b54605990df4e307f138e1",
@@ -1589,6 +1762,7 @@ export const PERMISSION_GROUPS = [
     label: "magic_transit_write",
     type: "edit",
     rowId: 1311,
+    parsedName: "Magic Transit",
   },
   {
     id: "319f5059d33a410da0fac4d35a716157",
@@ -1598,6 +1772,7 @@ export const PERMISSION_GROUPS = [
     label: "managed_headers_read",
     type: "read",
     rowId: 1312,
+    parsedName: "Managed Headers",
   },
   {
     id: "0fd9d56bc2da43ad8ea22d610dd8cab1",
@@ -1607,6 +1782,7 @@ export const PERMISSION_GROUPS = [
     label: "managed_headers_write",
     type: "edit",
     rowId: 1313,
+    parsedName: "Managed Headers",
   },
   {
     id: "429a068902904c5a9ed9fc267c67da9a",
@@ -1616,6 +1792,7 @@ export const PERMISSION_GROUPS = [
     label: "mass_url_redirects_read",
     type: "read",
     rowId: 1314,
+    parsedName: "Bulk URL Redirects",
   },
   {
     id: "abe78e2276664f4db588c1f675a77486",
@@ -1625,6 +1802,7 @@ export const PERMISSION_GROUPS = [
     label: "mass_url_redirects_write",
     type: "edit",
     rowId: 1315,
+    parsedName: "Bulk URL Redirects",
   },
   {
     id: "3518d0f75557482e952c6762d3e64903",
@@ -1634,6 +1812,7 @@ export const PERMISSION_GROUPS = [
     label: "memberships_read",
     type: "read",
     rowId: 1316,
+    parsedName: "Memberships",
   },
   {
     id: "9201bc6f42d440968aaab0c6f17ebb1d",
@@ -1643,6 +1822,7 @@ export const PERMISSION_GROUPS = [
     label: "memberships_write",
     type: "edit",
     rowId: 1317,
+    parsedName: "Memberships",
   },
   {
     id: "ce18edbdcebf465e9d6d1d2fc80ffd42",
@@ -1652,6 +1832,7 @@ export const PERMISSION_GROUPS = [
     label: "notifications_read",
     type: "read",
     rowId: 1318,
+    parsedName: "Notifications",
   },
   {
     id: "c3c847c5802d4ce3ba00e3e97b3c8555",
@@ -1661,6 +1842,7 @@ export const PERMISSION_GROUPS = [
     label: "notifications_write",
     type: "edit",
     rowId: 1319,
+    parsedName: "Notifications",
   },
   {
     id: "7b32a91ece3140d4b3c2c56f23fc8e35",
@@ -1670,6 +1852,7 @@ export const PERMISSION_GROUPS = [
     label: "origin_read",
     type: "read",
     rowId: 1320,
+    parsedName: "Origin Rules",
   },
   {
     id: "a4308c6855c84eb2873e01b6cc85cbb3",
@@ -1679,6 +1862,7 @@ export const PERMISSION_GROUPS = [
     label: "origin_write",
     type: "edit",
     rowId: 1321,
+    parsedName: "Origin Rules",
   },
   {
     id: "b415b70a4fd1412886f164451f20405c",
@@ -1688,6 +1872,7 @@ export const PERMISSION_GROUPS = [
     label: "page_rules_read",
     type: "read",
     rowId: 1322,
+    parsedName: "Page Rules",
   },
   {
     id: "ed07f6c337da4195b4e72a1fb2c6bcae",
@@ -1697,6 +1882,7 @@ export const PERMISSION_GROUPS = [
     label: "page_rules_write",
     type: "edit",
     rowId: 1323,
+    parsedName: "Page Rules",
   },
   {
     id: "440e6958bcc947329f8d56328d7322ce",
@@ -1706,6 +1892,7 @@ export const PERMISSION_GROUPS = [
     label: "page_shield",
     type: "shield",
     rowId: 1324,
+    parsedName: "Cloudflare Pages",
   },
   {
     id: "050531528b044d58bbb71666fef7c07c",
@@ -1715,6 +1902,7 @@ export const PERMISSION_GROUPS = [
     label: "page_shield_read",
     type: "read",
     rowId: 1325,
+    parsedName: "Page Shield",
   },
   {
     id: "87065285ab38463481e72815eefd18c3",
@@ -1724,6 +1912,7 @@ export const PERMISSION_GROUPS = [
     label: "page_shield_write",
     type: "edit",
     rowId: 1326,
+    parsedName: "Page Shield",
   },
   {
     id: "e247aedd66bd41cc9193af0213416666",
@@ -1733,6 +1922,7 @@ export const PERMISSION_GROUPS = [
     label: "page_read",
     type: "read",
     rowId: 1327,
+    parsedName: "Cloudflare Pages",
   },
   {
     id: "8d28297797f24fb8a0c332fe0866ec89",
@@ -1742,6 +1932,7 @@ export const PERMISSION_GROUPS = [
     label: "page_write",
     type: "edit",
     rowId: 1328,
+    parsedName: "Cloudflare Pages",
   },
   {
     id: "14b9cf2f410f4c0c9a16bb10a81c0e0b",
@@ -1751,6 +1942,7 @@ export const PERMISSION_GROUPS = [
     label: "pipelines_read",
     type: "read",
     rowId: 1329,
+    parsedName: "Workers Pipelines",
   },
   {
     id: "5606e7405dc542949d949d59993d321f",
@@ -1760,6 +1952,7 @@ export const PERMISSION_GROUPS = [
     label: "pipelines_send",
     type: "send",
     rowId: 1330,
+    parsedName: "Workers Pipelines",
   },
   {
     id: "e34111af393449539859485aa5ddd5bd",
@@ -1769,6 +1962,7 @@ export const PERMISSION_GROUPS = [
     label: "pipelines_write",
     type: "edit",
     rowId: 1331,
+    parsedName: "Workers Pipelines",
   },
   {
     id: "fd7f886c75a244389e892c4c3c068292",
@@ -1778,6 +1972,7 @@ export const PERMISSION_GROUPS = [
     label: "pubsub_read",
     type: "read",
     rowId: 1332,
+    parsedName: "Pub/Sub",
   },
   {
     id: "910b6ecca1c5411bb894e787362d1312",
@@ -1787,6 +1982,7 @@ export const PERMISSION_GROUPS = [
     label: "pubsub_write",
     type: "edit",
     rowId: 1333,
+    parsedName: "Pub/Sub",
   },
   {
     id: "84a7755d54c646ca87cd50682a34bf7c",
@@ -1796,6 +1992,7 @@ export const PERMISSION_GROUPS = [
     label: "queues_read",
     type: "read",
     rowId: 1334,
+    parsedName: "Queues",
   },
   {
     id: "366f57075ffc42689627bcf8242a1b6d",
@@ -1805,6 +2002,7 @@ export const PERMISSION_GROUPS = [
     label: "queues_write",
     type: "edit",
     rowId: 1335,
+    parsedName: "Queues",
   },
   {
     id: "dfe525ec7b07472c827d8d009178b2ac",
@@ -1814,6 +2012,7 @@ export const PERMISSION_GROUPS = [
     label: "radar_read",
     type: "read",
     rowId: 1336,
+    parsedName: "Radar",
   },
   {
     id: "93ae59e7a40c4287a57ff6e501186a63",
@@ -1823,6 +2022,7 @@ export const PERMISSION_GROUPS = [
     label: "response_compression_read",
     type: "read",
     rowId: 1337,
+    parsedName: "Response Compression",
   },
   {
     id: "4bd3fb513a23494aa1341a7e1eb6e080",
@@ -1832,6 +2032,7 @@ export const PERMISSION_GROUPS = [
     label: "response_compression_write",
     type: "edit",
     rowId: 1338,
+    parsedName: "Response Compression",
   },
   {
     id: "58abbad6d2ce40abb2594fbe932a2e0e",
@@ -1841,6 +2042,7 @@ export const PERMISSION_GROUPS = [
     label: "account_rule_policies_read",
     type: "read",
     rowId: 1339,
+    parsedName: "Rule Policies",
   },
   {
     id: "61ddc58f1da14f95b33b41213360cbeb",
@@ -1850,6 +2052,7 @@ export const PERMISSION_GROUPS = [
     label: "account_rule_policies_write",
     type: "edit",
     rowId: 1340,
+    parsedName: "Rule Policies",
   },
   {
     id: "d5812c023a5048b4882175a28952362d",
@@ -1859,6 +2062,7 @@ export const PERMISSION_GROUPS = [
     label: "scim_provisioning_write",
     type: "edit",
     rowId: 1341,
+    parsedName: "SCIM Provisioning",
   },
   {
     id: "7b7216b327b04b8fbc8f524e1f9b7531",
@@ -1868,6 +2072,7 @@ export const PERMISSION_GROUPS = [
     label: "ssl_and_certificates_read",
     type: "read",
     rowId: 1342,
+    parsedName: "SSL and Certificates",
   },
   {
     id: "c03055bc037c4ea9afb9a9f104b7b721",
@@ -1877,6 +2082,7 @@ export const PERMISSION_GROUPS = [
     label: "ssl_and_certificates_write",
     type: "edit",
     rowId: 1343,
+    parsedName: "SSL and Certificates",
   },
   {
     id: "853643ed57244ed1a05a7c024af9ab5a",
@@ -1886,6 +2092,7 @@ export const PERMISSION_GROUPS = [
     label: "sanitize_read",
     type: "read",
     rowId: 1344,
+    parsedName: "Sanitize",
   },
   {
     id: "89bb8c37d46042e98b84560eaaa6379f",
@@ -1895,6 +2102,7 @@ export const PERMISSION_GROUPS = [
     label: "sanitize_write",
     type: "edit",
     rowId: 1345,
+    parsedName: "Sanitize",
   },
   {
     id: "595409c54a24444b80a495620b2d614c",
@@ -1904,6 +2112,7 @@ export const PERMISSION_GROUPS = [
     label: "select_configuration_read",
     type: "read",
     rowId: 1346,
+    parsedName: "Select Configuration",
   },
   {
     id: "235eac9bb64942b49cb805cc851cb000",
@@ -1913,6 +2122,7 @@ export const PERMISSION_GROUPS = [
     label: "select_configuration_write",
     type: "edit",
     rowId: 1347,
+    parsedName: "Select Configuration",
   },
   {
     id: "74c654eb4aac40e28d6c6caa4c5aeb3d",
@@ -1922,6 +2132,7 @@ export const PERMISSION_GROUPS = [
     label: "snippets_read",
     type: "read",
     rowId: 1348,
+    parsedName: "Snippets",
   },
   {
     id: "dadeaf3abdf14126a77a35e0c92fc36e",
@@ -1931,6 +2142,7 @@ export const PERMISSION_GROUPS = [
     label: "snippets_write",
     type: "edit",
     rowId: 1349,
+    parsedName: "Snippets",
   },
   {
     id: "de21485a24744b76a004aa153898f7fe",
@@ -1940,6 +2152,7 @@ export const PERMISSION_GROUPS = [
     label: "stream_read",
     type: "read",
     rowId: 1350,
+    parsedName: "Stream",
   },
   {
     id: "714f9c13a5684c2885a793f5edb36f59",
@@ -1949,6 +2162,7 @@ export const PERMISSION_GROUPS = [
     label: "stream_write",
     type: "edit",
     rowId: 1351,
+    parsedName: "Stream",
   },
   {
     id: "3f376c8e6f764a938b848bd01c8995c4",
@@ -1958,6 +2172,7 @@ export const PERMISSION_GROUPS = [
     label: "teams_read",
     type: "read",
     rowId: 1352,
+    parsedName: "Zero Trust",
   },
   {
     id: "efb81b5cd37d49f3be1da9363a6d7a19",
@@ -1967,6 +2182,7 @@ export const PERMISSION_GROUPS = [
     label: "teams_report",
     type: "report",
     rowId: 1353,
+    parsedName: "Zero Trust",
   },
   {
     id: "b33f02c6f7284e05a6f20741c0bb0567",
@@ -1976,6 +2192,7 @@ export const PERMISSION_GROUPS = [
     label: "teams_write",
     type: "edit",
     rowId: 1354,
+    parsedName: "Zero Trust",
   },
   {
     id: "a9a99455bf3245f6a5a244f909d74830",
@@ -1985,6 +2202,7 @@ export const PERMISSION_GROUPS = [
     label: "transform_rules_read",
     type: "read",
     rowId: 1355,
+    parsedName: "Transform Rules",
   },
   {
     id: "ae16e88bc7814753a1894c7ce187ab72",
@@ -1994,6 +2212,7 @@ export const PERMISSION_GROUPS = [
     label: "transform_rules_write",
     type: "edit",
     rowId: 1356,
+    parsedName: "Transform Rules",
   },
   {
     id: "f0ba3733e746429182fcd40ec648c066",
@@ -2003,6 +2222,7 @@ export const PERMISSION_GROUPS = [
     label: "trust_and_safety_read",
     type: "read",
     rowId: 1357,
+    parsedName: "Trust and Safety",
   },
   {
     id: "120f843a9c074f399b830e542e5616b8",
@@ -2013,6 +2233,7 @@ export const PERMISSION_GROUPS = [
     label: "trust_and_safety_write",
     type: "edit",
     rowId: 1358,
+    parsedName: "Trust and Safety",
   },
   {
     id: "5d78fd7895974fd0bdbbbb079482721b",
@@ -2022,6 +2243,7 @@ export const PERMISSION_GROUPS = [
     label: "challenge_widgets_read",
     type: "read",
     rowId: 1359,
+    parsedName: "Turnstile",
   },
   {
     id: "755c05aa014b4f9ab263aa80b8167bd8",
@@ -2031,6 +2253,7 @@ export const PERMISSION_GROUPS = [
     label: "challenge_widgets_write",
     type: "edit",
     rowId: 1360,
+    parsedName: "Turnstile",
   },
   {
     id: "5d613a610b294788a29572aaac2f254d",
@@ -2040,6 +2263,7 @@ export const PERMISSION_GROUPS = [
     label: "url_scanner_read",
     type: "read",
     rowId: 1361,
+    parsedName: "URL Scanner",
   },
   {
     id: "2a400bcb29154daab509fe07e3facab0",
@@ -2049,6 +2273,7 @@ export const PERMISSION_GROUPS = [
     label: "url_scanner_write",
     type: "edit",
     rowId: 1362,
+    parsedName: "URL Scanner",
   },
   {
     id: "8acbe5bb0d54464ab867149d7f7cf8ac",
@@ -2058,6 +2283,7 @@ export const PERMISSION_GROUPS = [
     label: "user_details_read",
     type: "read",
     rowId: 1363,
+    parsedName: "User Details",
   },
   {
     id: "55a5e17cc99e4a3fa1f3432d262f2e55",
@@ -2067,6 +2293,7 @@ export const PERMISSION_GROUPS = [
     label: "user_details_write",
     type: "edit",
     rowId: 1364,
+    parsedName: "User Details",
   },
   {
     id: "1799edaae5db489294430e20d9b519e0",
@@ -2076,6 +2303,7 @@ export const PERMISSION_GROUPS = [
     label: "vectorize_read",
     type: "read",
     rowId: 1365,
+    parsedName: "Vectorize",
   },
   {
     id: "64156ba5be47441096c83c7fc17c488b",
@@ -2085,6 +2313,7 @@ export const PERMISSION_GROUPS = [
     label: "vectorize_write",
     type: "edit",
     rowId: 1366,
+    parsedName: "Vectorize",
   },
   {
     id: "cab5202d07ef47beae788e6bc95cb6fe",
@@ -2094,6 +2323,7 @@ export const PERMISSION_GROUPS = [
     label: "waiting_rooms_read",
     type: "read",
     rowId: 1367,
+    parsedName: "Waiting Room",
   },
   {
     id: "24fc124dc8254e0db468e60bf410c800",
@@ -2103,6 +2333,7 @@ export const PERMISSION_GROUPS = [
     label: "waiting_rooms_write",
     type: "edit",
     rowId: 1368,
+    parsedName: "Waiting Room",
   },
   {
     id: "8e31f574901c42e8ad89140b28d42112",
@@ -2112,6 +2343,7 @@ export const PERMISSION_GROUPS = [
     label: "web3_hostnames_read",
     type: "read",
     rowId: 1369,
+    parsedName: "Web3 Hostnames",
   },
   {
     id: "5ea6da42edb34811a78d1b007557c0ca",
@@ -2121,6 +2353,7 @@ export const PERMISSION_GROUPS = [
     label: "web3_hostnames_write",
     type: "edit",
     rowId: 1370,
+    parsedName: "Web3 Hostnames",
   },
   {
     id: "a92d2450e05d4e7bb7d0a64968f83d11",
@@ -2130,6 +2363,7 @@ export const PERMISSION_GROUPS = [
     label: "ai_read",
     type: "read",
     rowId: 1371,
+    parsedName: "Workers AI",
   },
   {
     id: "bacc64e0f6c34fc0883a1223f938a104",
@@ -2139,6 +2373,7 @@ export const PERMISSION_GROUPS = [
     label: "ai_write",
     type: "edit",
     rowId: 1372,
+    parsedName: "Workers AI",
   },
   {
     id: "ad99c5ae555e45c4bef5bdf2678388ba",
@@ -2148,6 +2383,7 @@ export const PERMISSION_GROUPS = [
     label: "workers_ci_read",
     type: "read",
     rowId: 1373,
+    parsedName: "Workers CI",
   },
   {
     id: "2e095cf436e2455fa62c9a9c2e18c478",
@@ -2157,6 +2393,7 @@ export const PERMISSION_GROUPS = [
     label: "workers_ci_write",
     type: "edit",
     rowId: 1374,
+    parsedName: "Workers CI",
   },
   {
     id: "8b47d2786a534c08a1f94ee8f9f599ef",
@@ -2166,6 +2403,7 @@ export const PERMISSION_GROUPS = [
     label: "workers_kv_storage_read",
     type: "read",
     rowId: 1375,
+    parsedName: "Workers KV Storage",
   },
   {
     id: "f7f0eda5697f475c90846e879bab8666",
@@ -2175,6 +2413,7 @@ export const PERMISSION_GROUPS = [
     label: "workers_kv_storage_write",
     type: "edit",
     rowId: 1376,
+    parsedName: "Workers KV Storage",
   },
   {
     id: "6a018a9f2fc74eb6b293b0c548f38b39",
@@ -2184,6 +2423,7 @@ export const PERMISSION_GROUPS = [
     label: "workers_r2_bucket_item_read",
     type: "read",
     rowId: 1377,
+    parsedName: "Workers R2 Bucket Scoped Storage",
   },
   {
     id: "2efd5506f9c8494dacb1fa10a3e7d5b6",
@@ -2193,6 +2433,7 @@ export const PERMISSION_GROUPS = [
     label: "workers_r2_bucket_item_write",
     type: "edit",
     rowId: 1378,
+    parsedName: "Workers R2 Bucket Scoped Storage",
   },
   {
     id: "b4992e1108244f5d8bfbd5744320c2e1",
@@ -2202,6 +2443,7 @@ export const PERMISSION_GROUPS = [
     label: "workers_r2_read",
     type: "read",
     rowId: 1379,
+    parsedName: "Workers R2 Storage",
   },
   {
     id: "bf7481a1826f439697cb59a20b22293e",
@@ -2211,6 +2453,7 @@ export const PERMISSION_GROUPS = [
     label: "workers_r2_write",
     type: "edit",
     rowId: 1380,
+    parsedName: "Workers R2 Storage",
   },
   {
     id: "2072033d694d415a936eaeb94e6405b8",
@@ -2221,6 +2464,7 @@ export const PERMISSION_GROUPS = [
     label: "workers_routes_read",
     type: "read",
     rowId: 1381,
+    parsedName: "Workers Routes",
   },
   {
     id: "28f4b596e7d643029c524985477ae49a",
@@ -2231,6 +2475,7 @@ export const PERMISSION_GROUPS = [
     label: "workers_routes_write",
     type: "edit",
     rowId: 1382,
+    parsedName: "Workers Routes",
   },
   {
     id: "1a71c399035b4950a1bd1466bbe4f420",
@@ -2240,6 +2485,7 @@ export const PERMISSION_GROUPS = [
     label: "workers_scripts_read",
     type: "read",
     rowId: 1383,
+    parsedName: "Workers Scripts",
   },
   {
     id: "e086da7e2179491d91ee5f35b3ca210a",
@@ -2249,6 +2495,7 @@ export const PERMISSION_GROUPS = [
     label: "workers_scripts_write",
     type: "edit",
     rowId: 1384,
+    parsedName: "Workers Scripts",
   },
   {
     id: "05880cd1bdc24d8bae0be2136972816b",
@@ -2258,6 +2505,7 @@ export const PERMISSION_GROUPS = [
     label: "workers_tail_read",
     type: "read",
     rowId: 1385,
+    parsedName: "Workers Tail",
   },
   {
     id: "cdeb15b336e640a2965df8c65052f1e0",
@@ -2267,6 +2515,7 @@ export const PERMISSION_GROUPS = [
     label: "zaraz_write",
     type: "edit_publish",
     rowId: 1386,
+    parsedName: "Zaraz",
   },
   {
     id: "89d5bf002389496e9994b8c30608b5d0",
@@ -2276,6 +2525,7 @@ export const PERMISSION_GROUPS = [
     label: "zaraz_edit",
     type: "edit",
     rowId: 1387,
+    parsedName: "Zaraz",
   },
   {
     id: "5bdbde7e76144204a244274eac3eb0eb",
@@ -2285,6 +2535,7 @@ export const PERMISSION_GROUPS = [
     label: "zaraz_read",
     type: "read",
     rowId: 1388,
+    parsedName: "Zaraz",
   },
   {
     id: "a1a6298e52584c8fb6313760a30c681e",
@@ -2294,6 +2545,7 @@ export const PERMISSION_GROUPS = [
     label: "access_seats_write",
     type: "edit",
     rowId: 1389,
+    parsedName: "Zero Trust: Seats",
   },
   {
     id: "0a6cfe8cd3ed445e918579e2fb13087b",
@@ -2303,6 +2555,7 @@ export const PERMISSION_GROUPS = [
     label: "zone_dns_settings_read",
     type: "read",
     rowId: 1390,
+    parsedName: "Zone DNS Settings",
   },
   {
     id: "c4df38be41c247b3b4b7702e76eadae0",
@@ -2312,6 +2565,7 @@ export const PERMISSION_GROUPS = [
     label: "zone_dns_settings_write",
     type: "edit",
     rowId: 1391,
+    parsedName: "Zone DNS Settings",
   },
   {
     id: "c8fed203ed3043cba015a93ad1616f1f",
@@ -2321,6 +2575,7 @@ export const PERMISSION_GROUPS = [
     label: "zone_read",
     type: "read",
     rowId: 1392,
+    parsedName: "Zone",
   },
   {
     id: "517b21aee92c4d89936c976ba6e4be55",
@@ -2330,6 +2585,7 @@ export const PERMISSION_GROUPS = [
     label: "zone_settings_read",
     type: "read",
     rowId: 1393,
+    parsedName: "Zone Settings",
   },
   {
     id: "3030687196b94b638145a3953da2b699",
@@ -2339,6 +2595,7 @@ export const PERMISSION_GROUPS = [
     label: "zone_settings_write",
     type: "edit",
     rowId: 1394,
+    parsedName: "Zone Settings",
   },
   {
     id: "211a4c0feb3e43b3a2d41f1443a433e7",
@@ -2348,6 +2605,7 @@ export const PERMISSION_GROUPS = [
     label: "zone_transform_rules_read",
     type: "read",
     rowId: 1395,
+    parsedName: "Transform Rules",
   },
   {
     id: "0ac90a90249747bca6b047d97f0803e9",
@@ -2357,6 +2615,7 @@ export const PERMISSION_GROUPS = [
     label: "zone_transform_rules_write",
     type: "edit",
     rowId: 1396,
+    parsedName: "Transform Rules",
   },
   {
     id: "1b1ea24cf0904d33903f0cc7e54e280f",
@@ -2366,6 +2625,7 @@ export const PERMISSION_GROUPS = [
     label: "zone_versioning_read",
     type: "read",
     rowId: 1397,
+    parsedName: "Zone Versioning",
   },
   {
     id: "c9915d86fbff46af9dd945c0a882294b",
@@ -2375,6 +2635,7 @@ export const PERMISSION_GROUPS = [
     label: "zone_versioning_write",
     type: "edit",
     rowId: 1398,
+    parsedName: "Zone Versioning",
   },
   {
     id: "dbc512b354774852af2b5a5f4ba3d470",
@@ -2384,6 +2645,7 @@ export const PERMISSION_GROUPS = [
     label: "zone_waf_read",
     type: "read",
     rowId: 1399,
+    parsedName: "Zone WAF",
   },
   {
     id: "fb6778dc191143babbfaa57993f1d275",
@@ -2393,6 +2655,7 @@ export const PERMISSION_GROUPS = [
     label: "zone_waf_write",
     type: "edit",
     rowId: 1400,
+    parsedName: "Zone WAF",
   },
   {
     id: "e6d2666161e84845a636613608cee8d5",
@@ -2402,5 +2665,6 @@ export const PERMISSION_GROUPS = [
     label: "zone_write",
     type: "edit",
     rowId: 1401,
+    parsedName: "Zone",
   },
 ];
