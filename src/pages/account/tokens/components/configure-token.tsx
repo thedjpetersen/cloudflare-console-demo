@@ -1,10 +1,16 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Combobox } from "@/components/ui/combobox";
-import { Plus, ArrowLeft, Trash2 } from "lucide-react";
+import { Plus, ArrowLeft, Trash2, Clock } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { PERMISSION_GROUPS } from "../permission-groups";
 import { type Policy } from "../types";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { PERMISSION_GROUP_TRANSLATION } from "../permission_group_translation";
 
 interface ConfigureTokenProps {
@@ -12,7 +18,9 @@ interface ConfigureTokenProps {
   setTokenName: (name: string) => void;
   onSubmit: (e: React.FormEvent) => void;
   policies: Policy[];
-  setPolicies: (policies: Policy[]) => void;
+  setPolicies: (
+    policies: Policy[] | ((currentPolicies: Policy[]) => Policy[])
+  ) => void;
   onBack: () => void;
   tokenType: "template" | "custom";
 }
@@ -30,6 +38,36 @@ const SCOPE_OPTIONS = [
   { value: "user", label: "User" },
 ];
 
+const mapPoliciesToPermissionRows = (policies: Policy[]): PermissionRow[] => {
+  return policies.flatMap((policy) => {
+    // Determine scope from resources
+    const resourceKey = Object.keys(policy.resources)[0] || "";
+    let scope = "";
+    if (resourceKey.includes("account.zone")) {
+      scope = "zone";
+    } else if (resourceKey.includes("account")) {
+      scope = "account";
+    } else if (resourceKey.includes("user")) {
+      scope = "user";
+    }
+
+    // Map each permission group to a row
+    return policy.permission_groups.map((group) => {
+      // Find the permission group details
+      const permissionGroup = PERMISSION_GROUPS.find(
+        (pg) => pg.id === group.id || pg.label === group.name
+      );
+
+      return {
+        id: group.id,
+        scope,
+        permissionName: group.name,
+        permissionType: permissionGroup?.type || "read",
+      };
+    });
+  });
+};
+
 export function ConfigureToken({
   tokenName,
   setTokenName,
@@ -42,6 +80,20 @@ export function ConfigureToken({
   const [permissionRows, setPermissionRows] = useState<PermissionRow[]>([
     { id: "1", scope: "", permissionName: "", permissionType: "" },
   ]);
+  const [startDate, setStartDate] = useState<string>("");
+  const [endDate, setEndDate] = useState<string>("");
+
+  // Sync permission rows with policies when they change
+  useEffect(() => {
+    if (policies.length > 0) {
+      const newRows = mapPoliciesToPermissionRows(policies);
+      setPermissionRows(
+        newRows.length > 0
+          ? newRows
+          : [{ id: "1", scope: "", permissionName: "", permissionType: "" }]
+      );
+    }
+  }, [policies]);
 
   // Filter permission groups based on selected scope
   const getPermissionOptions = (scope: string) => {
@@ -93,30 +145,62 @@ export function ConfigureToken({
     );
     if (!permissionGroup) return;
 
+    // Update permission rows
     setPermissionRows((prevRows) =>
       prevRows.map((r) =>
         r.id === rowId
           ? {
               ...r,
               permissionName: permission,
-              permissionType: "read", // Default to read
+              permissionType: permissionGroup.type || "read",
             }
           : r
       )
     );
 
     // Update policies
-    const newPolicy: Policy = {
-      effect: "allow",
-      resources: { "com.cloudflare.api": "*" },
-      permission_groups: [
-        {
-          id: Math.random().toString(),
-          name: permission,
-        },
-      ],
+    const scopeMap = {
+      account: "com.cloudflare.api.account.*",
+      zone: "com.cloudflare.api.account.zone.*",
+      user: "com.cloudflare.api.user.*",
     };
-    setPolicies([...policies, newPolicy]);
+
+    const newPolicies = permissionRows.reduce<Policy[]>((acc, row) => {
+      if (!row.scope || !row.permissionName) return acc;
+
+      // Find existing policy for this scope or create new one
+      const existingPolicyIndex = acc.findIndex(
+        (p) =>
+          Object.keys(p.resources)[0] ===
+          scopeMap[row.scope as keyof typeof scopeMap]
+      );
+
+      const permissionGroup = {
+        id: row.id,
+        name: row.permissionName,
+      };
+
+      if (existingPolicyIndex >= 0) {
+        // Update existing policy
+        const updatedPolicy = { ...acc[existingPolicyIndex] };
+        updatedPolicy.permission_groups = [
+          ...updatedPolicy.permission_groups.filter((g) => g.id !== row.id),
+          permissionGroup,
+        ];
+        acc[existingPolicyIndex] = updatedPolicy;
+      } else {
+        // Create new policy
+        acc.push({
+          effect: "allow",
+          resources: { [scopeMap[row.scope as keyof typeof scopeMap]]: "*" },
+          permission_groups: [permissionGroup],
+        });
+      }
+
+      return acc;
+    }, []);
+
+    setPolicies(newPolicies);
   };
 
   const getTypeOptions = (permissionName: string) => {
@@ -141,6 +225,31 @@ export function ConfigureToken({
         row.id === rowId ? { ...row, permissionType: type } : row
       )
     );
+
+    // Update policies with new type
+    const row = permissionRows.find((r) => r.id === rowId);
+    if (!row) return;
+
+    const scopeMap = {
+      account: "com.cloudflare.api.account.*",
+      zone: "com.cloudflare.api.account.zone.*",
+      user: "com.cloudflare.api.user.*",
+    };
+
+    setPolicies((currentPolicies: Policy[]) => {
+      return currentPolicies.map((policy: Policy) => {
+        const policyScope = Object.keys(policy.resources)[0];
+        if (policyScope === scopeMap[row.scope as keyof typeof scopeMap]) {
+          return {
+            ...policy,
+            permission_groups: policy.permission_groups.map((group) =>
+              group.id === rowId ? { ...group, type } : group
+            ),
+          };
+        }
+        return policy;
+      });
+    });
   };
 
   const addPermissionRow = () => {
@@ -159,6 +268,20 @@ export function ConfigureToken({
     if (permissionRows.length > 1) {
       setPermissionRows((prev) => prev.filter((row) => row.id !== id));
     }
+  };
+
+  const handleDateRangeSelect = (days: number) => {
+    const start = new Date();
+    const end = new Date();
+    end.setDate(end.getDate() + days);
+
+    setStartDate(start.toISOString().split("T")[0]);
+    setEndDate(end.toISOString().split("T")[0]);
+  };
+
+  const clearDateRange = () => {
+    setStartDate("");
+    setEndDate("");
   };
 
   return (
@@ -315,9 +438,48 @@ export function ConfigureToken({
             Define how long this token will stay active.
           </p>
           <div className="flex items-center gap-2 max-w-lg">
-            <Input type="date" className="w-1/2" />
+            <Input
+              type="date"
+              className="justify-center"
+              value={startDate}
+              onChange={(e) => setStartDate(e.target.value)}
+            />
             <span>to</span>
-            <Input type="date" className="w-1/2" />
+            <Input
+              type="date"
+              className="justify-center"
+              value={endDate}
+              onChange={(e) => setEndDate(e.target.value)}
+            />
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="outline" size="icon" className="p-4">
+                  <Clock className="h-4 w-4" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuItem onClick={() => handleDateRangeSelect(7)}>
+                  7 days
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => handleDateRangeSelect(30)}>
+                  30 days
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => handleDateRangeSelect(90)}>
+                  90 days
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => handleDateRangeSelect(365)}>
+                  1 year
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={clearDateRange}
+              type="button"
+            >
+              Clear
+            </Button>
           </div>
         </div>
 

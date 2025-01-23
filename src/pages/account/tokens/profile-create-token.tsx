@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { type Policy } from "./types";
 import { SelectTemplate } from "./components/select-template";
 import { ConfigureToken } from "./components/configure-token";
+import { tokenTemplates } from "./token-templates";
 
 export function ProfileCreateTokenPage() {
   const navigate = useNavigate();
@@ -15,9 +16,16 @@ export function ProfileCreateTokenPage() {
   const [tokenName, setTokenName] = useState("");
 
   const handleTemplateSelect = (
-    _templateId: string,
+    templateId: string,
     templatePolicies: Policy[]
   ) => {
+    // Find the template to get its name
+    const template = tokenTemplates.find(
+      (t: { id: string }) => t.id === templateId
+    );
+    if (template) {
+      setTokenName(template.name);
+    }
     setPolicies(templatePolicies);
     setTokenType("template");
     setStep(2);
@@ -26,6 +34,7 @@ export function ProfileCreateTokenPage() {
   const handleCustomSelect = () => {
     setTokenType("custom");
     setPolicies([]);
+    setTokenName("");
     setStep(2);
   };
 
