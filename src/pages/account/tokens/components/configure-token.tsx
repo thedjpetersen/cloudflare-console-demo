@@ -1,9 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Combobox } from "@/components/ui/combobox";
-import { Plus, ArrowLeft } from "lucide-react";
+import { Plus, ArrowLeft, Trash2 } from "lucide-react";
 import { PERMISSION_GROUPS } from "../permission-groups";
 import { type Policy } from "../types";
+import { useState } from "react";
 
 interface ConfigureTokenProps {
   tokenName: string;
@@ -25,6 +26,13 @@ type PermissionGroup = {
   rowId: number;
 };
 
+type PermissionRow = {
+  id: string;
+  permissionName: string;
+  permissionGroup: string;
+  permissionType: string;
+};
+
 export function ConfigureToken({
   tokenName,
   setTokenName,
@@ -34,15 +42,29 @@ export function ConfigureToken({
   onBack,
   tokenType,
 }: ConfigureTokenProps) {
+  const [permissionRows, setPermissionRows] = useState<PermissionRow[]>([
+    { id: "1", permissionName: "", permissionGroup: "", permissionType: "" },
+  ]);
+
   // Get unique permission names and types
   const uniquePermissionNames = Array.from(
     new Set(PERMISSION_GROUPS.map((group: PermissionGroup) => group.name))
   );
-  const uniquePermissionTypes = Array.from(
-    new Set(PERMISSION_GROUPS.map((group: PermissionGroup) => group.type))
-  );
 
-  const handlePermissionChange = (permission: string) => {
+  const permissionTypes = [
+    { value: "Account", label: "Account" },
+    { value: "Zone", label: "Zone" },
+    { value: "User", label: "User" },
+  ];
+
+  const handlePermissionChange = (permission: string, rowId: string) => {
+    setPermissionRows((prevRows) =>
+      prevRows.map((row) =>
+        row.id === rowId ? { ...row, permissionName: permission } : row
+      )
+    );
+
+    // Update policies as before
     const newPolicy: Policy = {
       effect: "allow",
       resources: { "com.cloudflare.api": "*" },
@@ -54,6 +76,24 @@ export function ConfigureToken({
       ],
     };
     setPolicies([...policies, newPolicy]);
+  };
+
+  const addPermissionRow = () => {
+    setPermissionRows((prev) => [
+      ...prev,
+      {
+        id: Math.random().toString(),
+        permissionName: "",
+        permissionGroup: "",
+        permissionType: "",
+      },
+    ]);
+  };
+
+  const removePermissionRow = (id: string) => {
+    if (permissionRows.length > 1) {
+      setPermissionRows((prev) => prev.filter((row) => row.id !== id));
+    }
   };
 
   return (
@@ -91,39 +131,64 @@ export function ConfigureToken({
             Select edit or read permissions to apply to your accounts or
             websites for this token.
           </p>
-          <div className="flex gap-4 max-w-4xl">
-            <Combobox
-              options={uniquePermissionNames.map((name) => ({
-                value: name,
-                label: name,
-              }))}
-              value=""
-              onValueChange={handlePermissionChange}
-              placeholder="Select permission type"
-              className="w-1/3"
-            />
-            <Combobox
-              options={PERMISSION_GROUPS.map((group: PermissionGroup) => ({
-                value: group.label,
-                label: group.description,
-              }))}
-              value=""
-              onValueChange={() => {}}
-              placeholder="Select permission group"
-              className="w-1/3"
-            />
-            <Combobox
-              options={uniquePermissionTypes.map((type) => ({
-                value: type,
-                label: type,
-              }))}
-              value=""
-              onValueChange={() => {}}
-              placeholder="Select permission level"
-              className="w-1/3"
-            />
-          </div>
-          <Button type="button" variant="link" className="text-blue-600">
+          {permissionRows.map((row) => (
+            <div key={row.id} className="flex gap-4 max-w-4xl items-center">
+              <Combobox
+                options={permissionTypes}
+                value={row.permissionName}
+                onValueChange={(value) =>
+                  handlePermissionChange(value.toLowerCase(), row.id)
+                }
+                placeholder="Select permission type"
+                className="w-1/3"
+              />
+              <Combobox
+                options={PERMISSION_GROUPS.map((group: PermissionGroup) => ({
+                  value: group.label,
+                  label: group.description,
+                }))}
+                value={row.permissionGroup}
+                onValueChange={(value) =>
+                  setPermissionRows((prev) =>
+                    prev.map((r) =>
+                      r.id === row.id ? { ...r, permissionGroup: value } : r
+                    )
+                  )
+                }
+                placeholder="Select item"
+                className="w-1/3"
+              />
+              <Combobox
+                options={permissionTypes}
+                value={row.permissionType}
+                onValueChange={(value) =>
+                  setPermissionRows((prev) =>
+                    prev.map((r) =>
+                      r.id === row.id ? { ...r, permissionType: value } : r
+                    )
+                  )
+                }
+                placeholder="Select"
+                className="w-1/3"
+              />
+              {permissionRows.length > 1 && (
+                <Button
+                  type="button"
+                  variant="ghost"
+                  onClick={() => removePermissionRow(row.id)}
+                  className="p-2"
+                >
+                  <Trash2 className="h-4 w-4 text-red-500" />
+                </Button>
+              )}
+            </div>
+          ))}
+          <Button
+            type="button"
+            variant="link"
+            className="text-blue-600"
+            onClick={addPermissionRow}
+          >
             <Plus className="h-4 w-4 mr-1" />
             Add more
           </Button>
