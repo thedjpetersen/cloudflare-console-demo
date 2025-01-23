@@ -15,7 +15,7 @@ export function ProfileCreateTokenPage() {
   const [tokenName, setTokenName] = useState("");
 
   const handleTemplateSelect = (
-    templateId: string,
+    _templateId: string,
     templatePolicies: Policy[]
   ) => {
     setPolicies(templatePolicies);

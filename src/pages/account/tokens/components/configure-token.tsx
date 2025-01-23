@@ -42,9 +42,6 @@ export function ConfigureToken({
     new Set(PERMISSION_GROUPS.map((group: PermissionGroup) => group.type))
   );
 
-  console.log(uniquePermissionNames);
-  console.log(uniquePermissionTypes);
-
   const handlePermissionChange = (permission: string) => {
     const newPolicy: Policy = {
       effect: "allow",
