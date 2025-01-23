@@ -1,50 +1,118 @@
-# React + TypeScript + Vite
+# Cloudflare API Token System Demo
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A TypeScript implementation of Cloudflare's API token management system, demonstrating enterprise-grade security patterns and user interface design for cloud service access control.
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This project showcases a comprehensive API token management system, mirroring Cloudflare's approach to granular access control. Built with TypeScript and React, it serves as a reference implementation for building secure, scalable token management systems.
 
-## Expanding the ESLint configuration
+## Token System Architecture
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+The token system implements granular access control with type-safe permissions and an intuitive user interface. Built on TypeScript, it provides a robust foundation for managing programmatic access to cloud resources.
 
-- Configure the top-level `parserOptions` property like this:
+### Token Creation Workflow
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+Token creation follows a carefully designed two-step process:
+
+1. **Template Selection**
+
+   - Pre-configured templates for common use cases
+   - Custom token creation option
+   - Clear template descriptions and use cases
+
+2. **Token Configuration**
+   - Intuitive permission selection interface
+   - Resource scope definition
+   - Token naming and metadata management
+
+### Permission Management
+
+At the core of the system is a sophisticated permission management engine. It implements:
+
+• Policy Types
+
+- Allow/Deny mechanisms
+- Resource-specific controls
+- Scope-based permissions
+
+• Permission Scopes
+
+- Account-level access
+- Zone-level permissions
+- Service-specific controls
+
+The system supports over 200 unique permission groups, each carefully defined to provide granular access control across different service areas.
+
+### Pre-built Templates
+
+The template system includes several categories of pre-configured access patterns:
+
+• DNS Management
+
+- Record modification permissions
+- Zone setting controls
+- DNS-specific resource scopes
+
+• Security Controls
+
+- WAF configuration access
+- Rate limiting management
+- SSL/TLS settings
+
+• Account Operations
+
+- Billing information access
+- Analytics data retrieval
+- User management controls
+
+### Implementation Details
+
+The token system's implementation is structured around several key components:
+
+```typescript
+// Core type definitions
+type Policy = {
+  effect: "allow" | "deny";
+  resources: { [key: string]: string };
+  permission_groups: Array<{ id: string; name: string }>;
+};
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+The system is built using:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+- React components for the user interface
+- TypeScript for type safety
+- Custom hooks for state management
+- Modular architecture for maintainability
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+## Project Structure
+
 ```
+src/
+└── pages/
+    └── account/
+        └── tokens/              # Token management system
+            ├── components/      # Token-specific components
+            ├── types.ts        # Token and policy types
+            ├── permission-groups.ts  # 200+ permission definitions
+            └── token-templates.ts    # Predefined templates
+```
+
+## Development
+
+To get started with development:
+
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+```
+
+## ESLint Configuration
+
+The project maintains high code quality standards through ESLint with TypeScript integration. The configuration can be extended by updating the `parserOptions` in your ESLint config, installing additional plugins as needed, and configuring React-specific rules. For detailed ESLint setup, refer to the [ESLint documentation](https://eslint.org/docs/latest/use/getting-started).
