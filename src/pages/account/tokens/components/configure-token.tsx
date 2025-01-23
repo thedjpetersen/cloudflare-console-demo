@@ -5,6 +5,7 @@ import { Plus, ArrowLeft, Trash2 } from "lucide-react";
 import { PERMISSION_GROUPS } from "../permission-groups";
 import { type Policy } from "../types";
 import { useState } from "react";
+import { PERMISSION_GROUP_TRANSLATION } from "../permission_group_translation";
 
 interface ConfigureTokenProps {
   tokenName: string;
@@ -50,13 +51,26 @@ export function ConfigureToken({
       user: "com.cloudflare.api.user",
     };
 
-    return PERMISSION_GROUPS.filter((group) =>
-      group.scopes.includes(scopeMap[scope as keyof typeof scopeMap])
-    ).map((group) => ({
-      value: group.label,
-      label: group.description,
-      type: group.type,
-    }));
+    const outputOptions = [];
+
+    for (const group of PERMISSION_GROUPS) {
+      if (
+        group.scopes.includes(scopeMap[scope as keyof typeof scopeMap]) &&
+        outputOptions.find((option) => option.value === group.name) ===
+          undefined
+      ) {
+        outputOptions.push({
+          value: group.name,
+          label:
+            PERMISSION_GROUP_TRANSLATION[
+              `api_tokens.permission_${group.name}` as keyof typeof PERMISSION_GROUP_TRANSLATION
+            ] || group.name,
+          type: group.type,
+        });
+      }
+    }
+
+    return outputOptions.sort((a, b) => a.label.localeCompare(b.label));
   };
 
   const handleScopeChange = (scope: string, rowId: string) => {

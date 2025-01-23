@@ -75,7 +75,13 @@ export function Combobox({
                 <CommandItem
                   key={option.value}
                   value={option.value}
+                  onClick={() => {
+                    console.log(`onClick: ${option.value}`);
+                    onValueChange?.(option.value);
+                    setOpen(false);
+                  }}
                   onSelect={(currentValue) => {
+                    console.log(`onSelect: ${currentValue}`);
                     onValueChange?.(currentValue);
                     setOpen(false);
                   }}
