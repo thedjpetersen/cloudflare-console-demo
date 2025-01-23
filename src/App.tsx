@@ -8,14 +8,6 @@ import { AppSidebar } from "@/components/app-sidebar";
 import { CommandPalette } from "@/components/command-palette";
 import { CommandProvider } from "@/hooks/use-command";
 import { GotoForm } from "@/components/goto-form";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
 import { Separator } from "@/components/ui/separator";
 import {
   SidebarInset,
@@ -51,6 +43,8 @@ import { KVPage } from "@/pages/storage/kv";
 import { D1Page } from "@/pages/storage/d1";
 import { HyperdrivePage } from "@/pages/storage/hyperdrive";
 import { QueuesPage } from "@/pages/storage/queues";
+import { TokensPage } from "@/pages/account/tokens";
+import { CreateTokenPage } from "@/pages/account/tokens/create";
 
 // Move Dashboard content to a separate component
 function DashboardContent() {
@@ -73,20 +67,13 @@ function AppLayout() {
   return (
     <SidebarProvider>
       <div className="flex min-h-screen w-full">
-        <AppSidebar className="w-[280px] shrink-0" />
+        <AppSidebar className="shrink-0" />
         <SidebarInset className="flex flex-1 flex-col">
           {/* Top Navigation Bar */}
           <header className="flex h-14 shrink-0 items-center justify-between border-b bg-white px-6">
             <div className="flex items-center gap-4">
               <SidebarTrigger className="-ml-2" />
               <Separator orientation="vertical" className="h-4" />
-              <div className="flex items-center gap-2">
-                <span className="text-sm font-medium">Workers & Pages</span>
-                <span className="text-sm text-gray-500">/</span>
-                <span className="text-sm text-gray-500">
-                  cloudflare-console-demo
-                </span>
-              </div>
             </div>
             <div className="flex items-center gap-4">
               <GotoForm />
@@ -102,47 +89,6 @@ function AppLayout() {
           </header>
 
           <div className="flex-1 overflow-auto bg-gray-50">
-            {/* Secondary Navigation */}
-            <header className="sticky top-0 z-10 flex h-12 shrink-0 items-center gap-2 border-b bg-white px-6">
-              <div className="w-full max-w-[1440px] mx-auto">
-                <div className="flex items-center justify-between">
-                  <Breadcrumb>
-                    <BreadcrumbList>
-                      <BreadcrumbItem className="hidden md:block">
-                        <BreadcrumbLink href="#">
-                          Building Your Application
-                        </BreadcrumbLink>
-                      </BreadcrumbItem>
-                      <BreadcrumbSeparator className="hidden md:block" />
-                      <BreadcrumbItem>
-                        <BreadcrumbPage>Data Fetching</BreadcrumbPage>
-                      </BreadcrumbItem>
-                    </BreadcrumbList>
-                  </Breadcrumb>
-                  <div className="flex gap-6">
-                    <a
-                      href="#"
-                      className="border-b-2 border-blue-500 px-1 py-3 text-sm font-medium text-blue-500"
-                    >
-                      Deployments
-                    </a>
-                    <a href="#" className="px-1 py-3 text-sm text-gray-600">
-                      Metrics
-                    </a>
-                    <a href="#" className="px-1 py-3 text-sm text-gray-600">
-                      Custom domains
-                    </a>
-                    <a href="#" className="px-1 py-3 text-sm text-gray-600">
-                      Integrations
-                    </a>
-                    <a href="#" className="px-1 py-3 text-sm text-gray-600">
-                      Settings
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </header>
-
             {/* Route Content */}
             <Routes>
               <Route path="/" element={<Navigate to="/websites" replace />} />
@@ -242,7 +188,10 @@ function AppLayout() {
               <Route path="/account">
                 <Route index element={<Navigate to="members" replace />} />
                 <Route path="members" element={<div>Members</div>} />
-                <Route path="tokens" element={<div>API Tokens</div>} />
+                <Route path="tokens">
+                  <Route index element={<TokensPage />} />
+                  <Route path="create" element={<CreateTokenPage />} />
+                </Route>
                 <Route path="audit" element={<div>Audit Log</div>} />
                 <Route path="billing" element={<div>Billing</div>} />
                 <Route path="config" element={<div>Configurations</div>} />
