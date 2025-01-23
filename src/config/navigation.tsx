@@ -57,7 +57,7 @@ export const navigationConfig: NavigationConfig = {
     // Web & Domains group
     {
       title: "Websites",
-      url: "#",
+      url: "/websites",
       items: [],
       icon: <MdLanguage className="w-5 h-5" />,
       section: "web",
@@ -65,7 +65,7 @@ export const navigationConfig: NavigationConfig = {
     },
     {
       title: "Discover",
-      url: "#",
+      url: "/discover",
       items: [],
       icon: <HiMiniMagnifyingGlass className="w-5 h-5" />,
       section: "web",
@@ -73,82 +73,82 @@ export const navigationConfig: NavigationConfig = {
     },
     {
       title: "Domain Registration",
-      url: "#",
+      url: "/domains",
       icon: <HiMiniGlobeAmericas className="w-5 h-5" />,
       section: "web",
       items: [
         {
           title: "Manage Domains",
-          url: "#",
+          url: "/domains/manage",
         },
         {
           title: "Transfer Domains",
-          url: "#",
+          url: "/domains/transfer",
         },
         {
           title: "Register Domains",
-          url: "#",
+          url: "/domains/register",
         },
       ],
     },
     // Analytics & Security group
     {
       title: "Analytics & Logs",
-      url: "#",
+      url: "/analytics",
       icon: <HiMiniChartBar className="w-5 h-5" />,
       section: "security",
       shortcut: "⌘A",
       items: [
         {
           title: "Account Analytics",
-          url: "#",
+          url: "/analytics/account",
           badge: "Beta",
           shortcut: "⌘⇧A",
         },
         {
           title: "Web Analytics",
-          url: "#",
+          url: "/analytics/web",
         },
         {
           title: "Carbon Impact Report",
-          url: "#",
+          url: "/analytics/carbon",
         },
         {
           title: "Magic Monitoring",
-          url: "#",
+          url: "/analytics/monitoring",
         },
       ],
     },
     {
       title: "Security Center",
-      url: "#",
+      url: "/security",
       icon: <HiMiniShieldCheck className="w-5 h-5" />,
       section: "security",
       shortcut: "⌘K",
       items: [
         {
           title: "Security Insights",
-          url: "#",
+          url: "/security/insights",
           shortcut: "⌘⇧S",
         },
         {
           title: "Infrastructure",
-          url: "#",
+          url: "/security/infrastructure",
         },
         {
           title: "Investigate",
-          url: "#",
+          url: "/security/investigate",
         },
         {
           title: "Blocked Content",
-          url: "#",
+          url: "/security/blocked",
           badge: "New",
         },
       ],
     },
     {
       title: "Trace",
-      url: "#",
+      url: "/trace",
       badge: "Beta",
       icon: <MdMonitorHeart className="w-5 h-5" />,
       section: "security",
@@ -156,190 +156,190 @@ export const navigationConfig: NavigationConfig = {
     },
     {
       title: "WAF",
-      url: "#",
+      url: "/waf",
       icon: <HiMiniBolt className="w-5 h-5" />,
       section: "security",
       items: [],
     },
     {
       title: "Turnstile",
-      url: "#",
+      url: "/turnstile",
       icon: <PiRobot className="w-5 h-5" />,
       section: "security",
       items: [],
     },
     {
       title: "IP Addresses",
-      url: "#",
+      url: "/ip-addresses",
       icon: <HiMiniCpuChip className="w-5 h-5" />,
       section: "security",
       items: [],
     },
     {
       title: "Zero Trust",
-      url: "#",
+      url: "/zero-trust",
       icon: <MdSecurity className="w-5 h-5" />,
       section: "security",
       items: [],
     },
     {
       title: "Email Security",
-      url: "#",
+      url: "/email-security",
       icon: <PiEnvelope className="w-5 h-5" />,
       section: "security",
       items: [
         {
           title: "Overview",
-          url: "#",
+          url: "/email-security/overview",
         },
         {
           title: "Zero Trust Email Security",
-          url: "#",
+          url: "/email-security/zero-trust",
           external: true,
         },
         {
           title: "Retro Scan",
-          url: "#",
+          url: "/email-security/retro-scan",
         },
       ],
     },
     // Compute & Storage group
     {
       title: "Compute (Workers)",
-      url: "#",
+      url: "/compute",
       icon: <PiCode className="w-5 h-5" />,
       section: "compute",
       shortcut: "⌘C",
       items: [
         {
           title: "Workers & Pages",
-          url: "#",
+          url: "/compute/workers",
           shortcut: "⌘⇧W",
         },
         {
           title: "Durable Objects",
-          url: "#",
+          url: "/compute/durable-objects",
         },
         {
           title: "Workflows",
-          url: "#",
+          url: "/compute/workflows",
           badge: "Beta",
         },
         {
           title: "Browser Rendering",
-          url: "#",
+          url: "/compute/browser-rendering",
         },
         {
           title: "Plans",
-          url: "#",
+          url: "/compute/plans",
         },
       ],
     },
     {
       title: "Workers for Platforms",
-      url: "#",
+      url: "/platforms",
       icon: <HiMiniSquares2X2 className="w-5 h-5" />,
       section: "compute",
       items: [],
     },
     {
       title: "Storage & Databases",
-      url: "#",
+      url: "/storage",
       icon: <PiDatabase className="w-5 h-5" />,
       section: "compute",
       items: [
         {
           title: "KV",
-          url: "#",
+          url: "/storage/kv",
         },
         {
           title: "D1 SQL Database",
-          url: "#",
+          url: "/storage/d1",
         },
         {
           title: "Hyperdrive",
-          url: "#",
+          url: "/storage/hyperdrive",
         },
         {
           title: "Queues",
-          url: "#",
+          url: "/storage/queues",
         },
       ],
     },
     {
       title: "R2 Object Storage",
-      url: "#",
+      url: "/r2",
       icon: <HiMiniCloud className="w-5 h-5" />,
       section: "compute",
       items: [
         {
           title: "Overview",
-          url: "#",
+          url: "/r2/overview",
         },
         {
           title: "Data Migration",
-          url: "#",
+          url: "/r2/migration",
         },
       ],
     },
     {
       title: "AI",
-      url: "#",
+      url: "/ai",
       icon: <PiBrain className="w-5 h-5" />,
       section: "compute",
       shortcut: "⌘I",
       items: [
         {
           title: "Workers AI",
-          url: "#",
+          url: "/ai/workers",
           shortcut: "⌘⇧I",
         },
         {
           title: "Vectorize",
-          url: "#",
+          url: "/ai/vectorize",
         },
         {
           title: "AI Gateway",
-          url: "#",
+          url: "/ai/gateway",
         },
       ],
     },
     // Media Services group
     {
       title: "Stream",
-      url: "#",
+      url: "/stream",
       icon: <PiVideoCamera className="w-5 h-5" />,
       section: "media",
       items: [
         {
           title: "Plans",
-          url: "#",
+          url: "/stream/plans",
         },
       ],
     },
     {
       title: "Images",
-      url: "#",
+      url: "/images",
       icon: <PiImage className="w-5 h-5" />,
       section: "media",
       items: [
         {
           title: "Overview",
-          url: "#",
+          url: "/images/overview",
         },
         {
           title: "Transformations",
-          url: "#",
+          url: "/images/transformations",
         },
         {
           title: "Plans",
-          url: "#",
+          url: "/images/plans",
         },
       ],
     },
     {
       title: "Calls",
-      url: "#",
+      url: "/calls",
       badge: "Beta",
       icon: <HiMiniPhone className="w-5 h-5" />,
       section: "media",
@@ -348,46 +348,46 @@ export const navigationConfig: NavigationConfig = {
     // Account Management group
     {
       title: "Manage Account",
-      url: "#",
+      url: "/account",
       icon: <HiMiniUserGroup className="w-5 h-5" />,
       section: "account",
       items: [
         {
           title: "Members",
-          url: "#",
+          url: "/account/members",
           isActive: true,
           shortcut: "⌘M",
         },
         {
           title: "Account API Tokens",
-          url: "#",
+          url: "/account/tokens",
         },
         {
           title: "Audit Log",
-          url: "#",
+          url: "/account/audit",
         },
         {
           title: "Billing",
-          url: "#",
+          url: "/account/billing",
           shortcut: "⌘B",
         },
         {
           title: "Configurations",
-          url: "#",
+          url: "/account/config",
           shortcut: "⌘S",
         },
       ],
     },
     {
       title: "Notifications",
-      url: "#",
+      url: "/notifications",
       icon: <HiMiniBell className="w-5 h-5" />,
       section: "account",
       items: [],
     },
     {
       title: "Bulk Redirects",
-      url: "#",
+      url: "/redirects",
       icon: <PiArrowsLeftRight className="w-5 h-5" />,
       section: "account",
       items: [],

@@ -1,4 +1,9 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import { AppSidebar } from "@/components/app-sidebar";
 import { CommandPalette } from "@/components/command-palette";
 import { CommandProvider } from "@/hooks/use-command";
@@ -17,6 +22,35 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
+
+// Import page components
+import { WebsitesPage } from "@/pages/websites";
+import { DiscoverPage } from "@/pages/discover";
+import { DomainsPage } from "@/pages/domains";
+import { ManageDomainsPage } from "@/pages/domains/manage";
+import { TransferDomainsPage } from "@/pages/domains/transfer";
+import { RegisterDomainsPage } from "@/pages/domains/register";
+import { AnalyticsPage } from "@/pages/analytics";
+import { SecurityPage } from "@/pages/security";
+import { TracePage } from "@/pages/trace";
+import { WAFPage } from "@/pages/waf";
+import { TurnstilePage } from "@/pages/turnstile";
+import { IPAddressesPage } from "@/pages/ip-addresses";
+import { ZeroTrustPage } from "@/pages/zero-trust";
+import { EmailSecurityPage } from "@/pages/email-security";
+import { EmailSecurityOverviewPage } from "@/pages/email-security/overview";
+import { EmailSecurityRetroScanPage } from "@/pages/email-security/retro-scan";
+import { ComputePage } from "@/pages/compute";
+import { WorkersAndPagesPage } from "@/pages/compute/workers";
+import { DurableObjectsPage } from "@/pages/compute/durable-objects";
+import { WorkflowsPage } from "@/pages/compute/workflows";
+import { BrowserRenderingPage } from "@/pages/compute/browser-rendering";
+import { ComputePlansPage } from "@/pages/compute/plans";
+import { StoragePage } from "@/pages/storage";
+import { KVPage } from "@/pages/storage/kv";
+import { D1Page } from "@/pages/storage/d1";
+import { HyperdrivePage } from "@/pages/storage/hyperdrive";
+import { QueuesPage } from "@/pages/storage/queues";
 
 // Move Dashboard content to a separate component
 function DashboardContent() {
@@ -111,6 +145,111 @@ function AppLayout() {
 
             {/* Route Content */}
             <Routes>
+              <Route path="/" element={<Navigate to="/websites" replace />} />
+
+              {/* Web & Domains */}
+              <Route path="/websites" element={<WebsitesPage />} />
+              <Route path="/discover" element={<DiscoverPage />} />
+              <Route path="/domains" element={<DomainsPage />}>
+                <Route index element={<Navigate to="manage" replace />} />
+                <Route path="manage" element={<ManageDomainsPage />} />
+                <Route path="transfer" element={<TransferDomainsPage />} />
+                <Route path="register" element={<RegisterDomainsPage />} />
+              </Route>
+
+              {/* Analytics & Security */}
+              <Route path="/analytics/*" element={<AnalyticsPage />} />
+              <Route path="/security/*" element={<SecurityPage />} />
+              <Route path="/trace" element={<TracePage />} />
+              <Route path="/waf" element={<WAFPage />} />
+              <Route path="/turnstile" element={<TurnstilePage />} />
+              <Route path="/ip-addresses" element={<IPAddressesPage />} />
+              <Route path="/zero-trust" element={<ZeroTrustPage />} />
+              <Route path="/email-security" element={<EmailSecurityPage />}>
+                <Route index element={<Navigate to="overview" replace />} />
+                <Route
+                  path="overview"
+                  element={<EmailSecurityOverviewPage />}
+                />
+                <Route
+                  path="retro-scan"
+                  element={<EmailSecurityRetroScanPage />}
+                />
+              </Route>
+
+              {/* Compute & Storage */}
+              <Route path="/compute" element={<ComputePage />}>
+                <Route index element={<Navigate to="workers" replace />} />
+                <Route path="workers" element={<WorkersAndPagesPage />} />
+                <Route
+                  path="durable-objects"
+                  element={<DurableObjectsPage />}
+                />
+                <Route path="workflows" element={<WorkflowsPage />} />
+                <Route
+                  path="browser-rendering"
+                  element={<BrowserRenderingPage />}
+                />
+                <Route path="plans" element={<ComputePlansPage />} />
+              </Route>
+              <Route
+                path="/platforms"
+                element={<div>Workers for Platforms</div>}
+              />
+
+              {/* Storage */}
+              <Route path="/storage" element={<StoragePage />}>
+                <Route index element={<Navigate to="kv" replace />} />
+                <Route path="kv" element={<KVPage />} />
+                <Route path="d1" element={<D1Page />} />
+                <Route path="hyperdrive" element={<HyperdrivePage />} />
+                <Route path="queues" element={<QueuesPage />} />
+              </Route>
+
+              {/* R2 Storage */}
+              <Route path="/r2">
+                <Route index element={<Navigate to="overview" replace />} />
+                <Route path="overview" element={<div>R2 Overview</div>} />
+                <Route path="migration" element={<div>Data Migration</div>} />
+              </Route>
+
+              {/* AI */}
+              <Route path="/ai">
+                <Route index element={<Navigate to="workers" replace />} />
+                <Route path="workers" element={<div>Workers AI</div>} />
+                <Route path="vectorize" element={<div>Vectorize</div>} />
+                <Route path="gateway" element={<div>AI Gateway</div>} />
+              </Route>
+
+              {/* Media Services */}
+              <Route path="/stream">
+                <Route index element={<Navigate to="overview" replace />} />
+                <Route path="overview" element={<div>Stream Overview</div>} />
+                <Route path="plans" element={<div>Stream Plans</div>} />
+              </Route>
+              <Route path="/images">
+                <Route index element={<Navigate to="overview" replace />} />
+                <Route path="overview" element={<div>Images Overview</div>} />
+                <Route
+                  path="transformations"
+                  element={<div>Image Transformations</div>}
+                />
+                <Route path="plans" element={<div>Image Plans</div>} />
+              </Route>
+              <Route path="/calls" element={<div>Calls</div>} />
+
+              {/* Account Management */}
+              <Route path="/account">
+                <Route index element={<Navigate to="members" replace />} />
+                <Route path="members" element={<div>Members</div>} />
+                <Route path="tokens" element={<div>API Tokens</div>} />
+                <Route path="audit" element={<div>Audit Log</div>} />
+                <Route path="billing" element={<div>Billing</div>} />
+                <Route path="config" element={<div>Configurations</div>} />
+              </Route>
+              <Route path="/notifications" element={<div>Notifications</div>} />
+              <Route path="/redirects" element={<div>Bulk Redirects</div>} />
+
               <Route path="/dashboard" element={<DashboardContent />} />
             </Routes>
           </div>
