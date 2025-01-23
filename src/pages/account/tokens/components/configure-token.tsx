@@ -16,22 +16,18 @@ interface ConfigureTokenProps {
   tokenType: "template" | "custom";
 }
 
-type PermissionGroup = {
-  id: string;
-  name: string;
-  description: string;
-  scopes: string[];
-  label: string;
-  type: string;
-  rowId: number;
-};
-
 type PermissionRow = {
   id: string;
+  scope: string;
   permissionName: string;
-  permissionGroup: string;
   permissionType: string;
 };
+
+const SCOPE_OPTIONS = [
+  { value: "account", label: "Account" },
+  { value: "zone", label: "Zone" },
+  { value: "user", label: "User" },
+];
 
 export function ConfigureToken({
   tokenName,
@@ -43,28 +39,59 @@ export function ConfigureToken({
   tokenType,
 }: ConfigureTokenProps) {
   const [permissionRows, setPermissionRows] = useState<PermissionRow[]>([
-    { id: "1", permissionName: "", permissionGroup: "", permissionType: "" },
+    { id: "1", scope: "", permissionName: "", permissionType: "" },
   ]);
 
-  // Get unique permission names and types
-  const uniquePermissionNames = Array.from(
-    new Set(PERMISSION_GROUPS.map((group: PermissionGroup) => group.name))
-  );
+  // Filter permission groups based on selected scope
+  const getPermissionOptions = (scope: string) => {
+    const scopeMap = {
+      account: "com.cloudflare.api.account",
+      zone: "com.cloudflare.api.account.zone",
+      user: "com.cloudflare.api.user",
+    };
 
-  const permissionTypes = [
-    { value: "Account", label: "Account" },
-    { value: "Zone", label: "Zone" },
-    { value: "User", label: "User" },
-  ];
+    return PERMISSION_GROUPS.filter((group) =>
+      group.scopes.includes(scopeMap[scope as keyof typeof scopeMap])
+    ).map((group) => ({
+      value: group.label,
+      label: group.description,
+      type: group.type,
+    }));
+  };
 
-  const handlePermissionChange = (permission: string, rowId: string) => {
+  const handleScopeChange = (scope: string, rowId: string) => {
+    console.log(`handleScopeChange: ${scope} ${rowId}`);
     setPermissionRows((prevRows) =>
       prevRows.map((row) =>
-        row.id === rowId ? { ...row, permissionName: permission } : row
+        row.id === rowId
+          ? { ...row, scope, permissionName: "", permissionType: "" }
+          : row
+      )
+    );
+  };
+
+  const handlePermissionChange = (permission: string, rowId: string) => {
+    const row = permissionRows.find((r) => r.id === rowId);
+    if (!row) return;
+
+    const permissionGroup = PERMISSION_GROUPS.find(
+      (g) => g.label === permission
+    );
+    if (!permissionGroup) return;
+
+    setPermissionRows((prevRows) =>
+      prevRows.map((r) =>
+        r.id === rowId
+          ? {
+              ...r,
+              permissionName: permission,
+              permissionType: "read", // Default to read
+            }
+          : r
       )
     );
 
-    // Update policies as before
+    // Update policies
     const newPolicy: Policy = {
       effect: "allow",
       resources: { "com.cloudflare.api": "*" },
@@ -78,13 +105,37 @@ export function ConfigureToken({
     setPolicies([...policies, newPolicy]);
   };
 
+  const getTypeOptions = (permissionName: string) => {
+    const permissionGroup = PERMISSION_GROUPS.find(
+      (g) => g.label === permissionName
+    );
+
+    // Always include Read
+    const options = [{ value: "read", label: "Read" }];
+
+    // Only include Edit if the permission type includes "edit"
+    if (permissionGroup && permissionGroup.type === "edit") {
+      options.push({ value: "edit", label: "Edit" });
+    }
+
+    return options;
+  };
+
+  const handleTypeChange = (type: string, rowId: string) => {
+    setPermissionRows((prevRows) =>
+      prevRows.map((row) =>
+        row.id === rowId ? { ...row, permissionType: type } : row
+      )
+    );
+  };
+
   const addPermissionRow = () => {
     setPermissionRows((prev) => [
       ...prev,
       {
         id: Math.random().toString(),
+        scope: "",
         permissionName: "",
-        permissionGroup: "",
         permissionType: "",
       },
     ]);
@@ -134,42 +185,27 @@ export function ConfigureToken({
           {permissionRows.map((row) => (
             <div key={row.id} className="flex gap-4 max-w-4xl items-center">
               <Combobox
-                options={permissionTypes}
+                options={SCOPE_OPTIONS}
+                value={row.scope}
+                onValueChange={(value) => handleScopeChange(value, row.id)}
+                placeholder="Select scope"
+                className="w-1/3"
+              />
+              <Combobox
+                options={row.scope ? getPermissionOptions(row.scope) : []}
                 value={row.permissionName}
-                onValueChange={(value) =>
-                  handlePermissionChange(value.toLowerCase(), row.id)
-                }
-                placeholder="Select permission type"
+                onValueChange={(value) => handlePermissionChange(value, row.id)}
+                placeholder="Select permission"
                 className="w-1/3"
+                disabled={!row.scope}
               />
               <Combobox
-                options={PERMISSION_GROUPS.map((group: PermissionGroup) => ({
-                  value: group.label,
-                  label: group.description,
-                }))}
-                value={row.permissionGroup}
-                onValueChange={(value) =>
-                  setPermissionRows((prev) =>
-                    prev.map((r) =>
-                      r.id === row.id ? { ...r, permissionGroup: value } : r
-                    )
-                  )
-                }
-                placeholder="Select item"
-                className="w-1/3"
-              />
-              <Combobox
-                options={permissionTypes}
+                options={getTypeOptions(row.permissionName)}
                 value={row.permissionType}
-                onValueChange={(value) =>
-                  setPermissionRows((prev) =>
-                    prev.map((r) =>
-                      r.id === row.id ? { ...r, permissionType: value } : r
-                    )
-                  )
-                }
-                placeholder="Select"
+                onValueChange={(value) => handleTypeChange(value, row.id)}
+                placeholder="Select type"
                 className="w-1/3"
+                disabled={!row.permissionName}
               />
               {permissionRows.length > 1 && (
                 <Button
