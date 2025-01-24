@@ -8,9 +8,30 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { PERMISSION_GROUPS } from "../permission-groups";
 import { type Policy } from "../types";
 import { useState, useEffect } from "react";
+import {
+  type PermissionScope,
+  getAllPermissions,
+  getPermissionsByScope,
+  findPermissionById,
+  isReadOnlyPermission,
+} from "../api-permissions";
+import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+
+interface PermissionRow {
+  id: string;
+  scope: string;
+  permissionName: string;
+  permissionType: "read" | "edit";
+}
 
 interface ConfigureTokenProps {
   tokenName: string;
@@ -24,11 +45,17 @@ interface ConfigureTokenProps {
   tokenType: "template" | "custom";
 }
 
-type PermissionRow = {
+type ZoneResourceRow = {
   id: string;
-  scope: string;
-  permissionName: string;
-  permissionType: string;
+  inclusionType: string;
+  zoneScope: string;
+  account: string;
+};
+
+type IpFilterRow = {
+  id: string;
+  operator: string;
+  ipAddress: string;
 };
 
 const SCOPE_OPTIONS = [
@@ -50,18 +77,13 @@ const mapPoliciesToPermissionRows = (policies: Policy[]): PermissionRow[] => {
       scope = "user";
     }
 
-    // Map each permission group to a row
-    return policy.permission_groups.map((group) => {
-      // Find the permission group details
-      const permissionGroup = PERMISSION_GROUPS.find(
-        (pg) => pg.id === group.id || pg.label === group.name
-      );
-
+    // Map each permission to a row
+    return policy.permissions.map((permission) => {
       return {
-        id: group.id,
+        id: permission.id,
         scope,
-        permissionName: group.name,
-        permissionType: permissionGroup?.type || "read",
+        permissionName: permission.name,
+        permissionType: permission.type === "read" ? "read" : "edit",
       };
     });
   });
@@ -77,7 +99,13 @@ export function ConfigureToken({
   tokenType,
 }: ConfigureTokenProps) {
   const [permissionRows, setPermissionRows] = useState<PermissionRow[]>([
-    { id: "1", scope: "", permissionName: "", permissionType: "" },
+    { id: "1", scope: "", permissionName: "", permissionType: "read" },
+  ]);
+  const [zoneRows, setZoneRows] = useState<ZoneResourceRow[]>([
+    { id: "1", inclusionType: "include", zoneScope: "all", account: "account" },
+  ]);
+  const [ipFilterRows, setIpFilterRows] = useState<IpFilterRow[]>([
+    { id: "1", operator: "is_not_in", ipAddress: "" },
   ]);
   const [startDate, setStartDate] = useState<string>("");
   const [endDate, setEndDate] = useState<string>("");
@@ -89,7 +117,7 @@ export function ConfigureToken({
       setPermissionRows(
         newRows.length > 0
           ? newRows
-          : [{ id: "1", scope: "", permissionName: "", permissionType: "" }]
+          : [{ id: "1", scope: "", permissionName: "", permissionType: "read" }]
       );
     }
   }, [policies]);
@@ -102,120 +130,137 @@ export function ConfigureToken({
       user: "com.cloudflare.api.user",
     };
 
-    const outputOptions = [];
+    const permissions = getPermissionsByScope(
+      scopeMap[scope as keyof typeof scopeMap] as PermissionScope
+    );
 
-    for (const group of PERMISSION_GROUPS) {
-      if (
-        group.scopes.includes(scopeMap[scope as keyof typeof scopeMap]) &&
-        outputOptions.find((option) => option.value === group.name) ===
-          undefined
-      ) {
-        outputOptions.push({
-          value: group.name,
-          label: group.parsedName || group.name,
-          type: group.type,
-        });
-      }
-    }
-
-    return outputOptions.sort((a, b) => a.label.localeCompare(b.label));
+    return permissions
+      .map((permission) => ({
+        value: permission.name,
+        label: permission.name,
+        type: isReadOnlyPermission(permission) ? "read" : "edit",
+      }))
+      .sort((a, b) => a.label.localeCompare(b.label));
   };
 
   const handleScopeChange = (scope: string, rowId: string) => {
-    console.log(`handleScopeChange: ${scope} ${rowId}`);
     setPermissionRows((prevRows) =>
       prevRows.map((row) =>
         row.id === rowId
-          ? { ...row, scope, permissionName: "", permissionType: "" }
+          ? { ...row, scope, permissionName: "", permissionType: "read" }
           : row
       )
     );
+
+    // Clear existing policies for this row
+    setPolicies((currentPolicies) => {
+      const scopeMap = {
+        account: "com.cloudflare.api.account.*",
+        zone: "com.cloudflare.api.account.zone.*",
+        user: "com.cloudflare.api.user.*",
+      };
+
+      const targetScope = scopeMap[scope as keyof typeof scopeMap];
+      const existingPolicy = currentPolicies.find(
+        (p) => Object.keys(p.resources)[0] === targetScope
+      );
+
+      if (existingPolicy) {
+        return currentPolicies.map((policy) =>
+          Object.keys(policy.resources)[0] === targetScope
+            ? {
+                ...policy,
+                permissions: policy.permissions.filter((p) => p.id !== rowId),
+              }
+            : policy
+        );
+      }
+
+      return currentPolicies;
+    });
   };
 
-  const handlePermissionChange = (permission: string, rowId: string) => {
-    const row = permissionRows.find((r) => r.id === rowId);
-    if (!row) return;
-
-    const permissionGroup = PERMISSION_GROUPS.find(
-      (g) => g.label === permission
+  const handlePermissionChange = (permissionId: string, rowId: string) => {
+    const allPermissions = getAllPermissions();
+    const selectedPermission = Object.values(allPermissions).find(
+      (p) => p.id === permissionId
     );
-    if (!permissionGroup) return;
 
-    // Update permission rows
+    if (!selectedPermission) return;
+
     setPermissionRows((prevRows) =>
-      prevRows.map((r) =>
-        r.id === rowId
+      prevRows.map((row) =>
+        row.id === rowId
           ? {
-              ...r,
-              permissionName: permission,
-              permissionType: permissionGroup.type || "read",
+              ...row,
+              permissionName: selectedPermission.name,
+              permissionType:
+                selectedPermission.type === "read" ? "read" : "edit",
             }
-          : r
+          : row
       )
     );
 
     // Update policies
+    const row = permissionRows.find((r) => r.id === rowId);
+    if (!row) return;
+
     const scopeMap = {
       account: "com.cloudflare.api.account.*",
       zone: "com.cloudflare.api.account.zone.*",
       user: "com.cloudflare.api.user.*",
     };
 
-    const newPolicies = permissionRows.reduce<Policy[]>((acc, row) => {
-      if (!row.scope || !row.permissionName) return acc;
-
-      // Find existing policy for this scope or create new one
-      const existingPolicyIndex = acc.findIndex(
-        (p) =>
-          Object.keys(p.resources)[0] ===
-          scopeMap[row.scope as keyof typeof scopeMap]
+    setPolicies((currentPolicies) => {
+      const targetScope = scopeMap[row.scope as keyof typeof scopeMap];
+      const existingPolicy = currentPolicies.find(
+        (p) => Object.keys(p.resources)[0] === targetScope
       );
 
-      const permissionGroup = {
-        id: row.id,
-        name: row.permissionName,
-      };
-
-      if (existingPolicyIndex >= 0) {
-        // Update existing policy
-        const updatedPolicy = { ...acc[existingPolicyIndex] };
-        updatedPolicy.permission_groups = [
-          ...updatedPolicy.permission_groups.filter((g) => g.id !== row.id),
-          permissionGroup,
-        ];
-        acc[existingPolicyIndex] = updatedPolicy;
-      } else {
-        // Create new policy
-        acc.push({
-          effect: "allow",
-          resources: { [scopeMap[row.scope as keyof typeof scopeMap]]: "*" },
-          permission_groups: [permissionGroup],
-        });
+      if (existingPolicy) {
+        return currentPolicies.map((policy) =>
+          Object.keys(policy.resources)[0] === targetScope
+            ? {
+                ...policy,
+                permissions: [
+                  ...policy.permissions.filter((p) => p.id !== rowId),
+                  selectedPermission,
+                ],
+              }
+            : policy
+        );
       }
 
-      return acc;
-    }, []);
-
-    setPolicies(newPolicies);
+      // Create new policy if one doesn't exist for this scope
+      return [
+        ...currentPolicies,
+        {
+          effect: "allow",
+          resources: { [targetScope]: "*" },
+          permissions: [selectedPermission],
+        },
+      ];
+    });
   };
 
   const getTypeOptions = (permissionName: string) => {
-    const permissionGroup = PERMISSION_GROUPS.find(
-      (g) => g.label === permissionName
+    const allPermissions = getAllPermissions();
+    const permission = Object.values(allPermissions).find(
+      (p) => p.name === permissionName
     );
 
     // Always include Read
-    const options = [{ value: "read", label: "Read" }];
+    const options = [{ value: "read" as const, label: "Read" }];
 
-    // Only include Edit if the permission type includes "edit"
-    if (permissionGroup && permissionGroup.type === "edit") {
-      options.push({ value: "edit", label: "Edit" });
+    // Only include Edit if the permission is not read-only
+    if (permission?.type === "edit") {
+      options.push({ value: "edit" as const, label: "Edit" });
     }
 
     return options;
   };
 
-  const handleTypeChange = (type: string, rowId: string) => {
+  const handleTypeChange = (type: "read" | "edit", rowId: string) => {
     setPermissionRows((prevRows) =>
       prevRows.map((row) =>
         row.id === rowId ? { ...row, permissionType: type } : row
@@ -238,8 +283,8 @@ export function ConfigureToken({
         if (policyScope === scopeMap[row.scope as keyof typeof scopeMap]) {
           return {
             ...policy,
-            permission_groups: policy.permission_groups.map((group) =>
-              group.id === rowId ? { ...group, type } : group
+            permissions: policy.permissions.map((permission) =>
+              permission.id === rowId ? { ...permission, type } : permission
             ),
           };
         }
@@ -255,7 +300,7 @@ export function ConfigureToken({
         id: Math.random().toString(),
         scope: "",
         permissionName: "",
-        permissionType: "",
+        permissionType: "read",
       },
     ]);
   };
@@ -278,6 +323,49 @@ export function ConfigureToken({
   const clearDateRange = () => {
     setStartDate("");
     setEndDate("");
+  };
+
+  const addZoneRow = () => {
+    setZoneRows((prev) => [
+      ...prev,
+      {
+        id: Math.random().toString(),
+        inclusionType: "include",
+        zoneScope: "all",
+        account: "account",
+      },
+    ]);
+  };
+
+  const removeZoneRow = (id: string) => {
+    if (zoneRows.length > 1) {
+      setZoneRows((prev) => prev.filter((row) => row.id !== id));
+    }
+  };
+
+  const addIpFilterRow = () => {
+    setIpFilterRows((prev) => [
+      ...prev,
+      { id: Math.random().toString(), operator: "is_not_in", ipAddress: "" },
+    ]);
+  };
+
+  const removeIpFilterRow = (id: string) => {
+    if (ipFilterRows.length > 1) {
+      setIpFilterRows((prev) => prev.filter((row) => row.id !== id));
+    }
+  };
+
+  const handleIpAddressChange = (value: string, id: string) => {
+    setIpFilterRows((prev) =>
+      prev.map((row) => (row.id === id ? { ...row, ipAddress: value } : row))
+    );
+  };
+
+  const handleOperatorChange = (value: string, id: string) => {
+    setIpFilterRows((prev) =>
+      prev.map((row) => (row.id === id ? { ...row, operator: value } : row))
+    );
   };
 
   return (
@@ -369,35 +457,70 @@ export function ConfigureToken({
           <p className="text-sm text-gray-600">
             Select zones to include or exclude.
           </p>
-          <div className="flex gap-4 max-w-4xl">
-            <Combobox
-              options={[{ value: "include", label: "Include" }]}
-              value="include"
-              onValueChange={() => {}}
-              placeholder="Select inclusion type"
-              className="w-1/3"
-            />
-            <Combobox
-              options={[{ value: "all", label: "All zones from an account" }]}
-              value="all"
-              onValueChange={() => {}}
-              placeholder="Select zone scope"
-              className="w-1/3"
-            />
-            <Combobox
-              options={[
-                {
-                  value: "account",
-                  label: "Thedjpetersen@gmail.com's Account",
-                },
-              ]}
-              value="account"
-              onValueChange={() => {}}
-              placeholder="Select account"
-              className="w-1/3"
-            />
-          </div>
-          <Button type="button" variant="link" className="text-blue-600">
+          {zoneRows.map((row) => (
+            <div key={row.id} className="flex gap-4 max-w-4xl items-center">
+              <Combobox
+                options={[{ value: "include", label: "Include" }]}
+                value={row.inclusionType}
+                onValueChange={(value) =>
+                  setZoneRows((prev) =>
+                    prev.map((r) =>
+                      r.id === row.id ? { ...r, inclusionType: value } : r
+                    )
+                  )
+                }
+                placeholder="Select inclusion type"
+                className="w-1/3"
+              />
+              <Combobox
+                options={[{ value: "all", label: "All zones from an account" }]}
+                value={row.zoneScope}
+                onValueChange={(value) =>
+                  setZoneRows((prev) =>
+                    prev.map((r) =>
+                      r.id === row.id ? { ...r, zoneScope: value } : r
+                    )
+                  )
+                }
+                placeholder="Select zone scope"
+                className="w-1/3"
+              />
+              <Combobox
+                options={[
+                  {
+                    value: "account",
+                    label: "Thedjpetersen@gmail.com's Account",
+                  },
+                ]}
+                value={row.account}
+                onValueChange={(value) =>
+                  setZoneRows((prev) =>
+                    prev.map((r) =>
+                      r.id === row.id ? { ...r, account: value } : r
+                    )
+                  )
+                }
+                placeholder="Select account"
+                className="w-1/3"
+              />
+              {zoneRows.length > 1 && (
+                <Button
+                  type="button"
+                  variant="ghost"
+                  onClick={() => removeZoneRow(row.id)}
+                  className="p-2"
+                >
+                  <Trash2 className="h-4 w-4 text-red-500" />
+                </Button>
+              )}
+            </div>
+          ))}
+          <Button
+            type="button"
+            variant="link"
+            className="text-blue-600"
+            onClick={addZoneRow}
+          >
             <Plus className="h-4 w-4 mr-1" />
             Add more
           </Button>
@@ -411,17 +534,42 @@ export function ConfigureToken({
             limits the client IP addresses that can use the API token with
             Cloudflare. By default, this token will apply to all addresses.
           </p>
-          <div className="flex gap-4 max-w-4xl">
-            <Combobox
-              options={[{ value: "is_not_in", label: "Is not in" }]}
-              value="is_not_in"
-              onValueChange={() => {}}
-              placeholder="Select operator"
-              className="w-1/3"
-            />
-            <Input placeholder="e.g. 192.168.1.88" className="w-2/3" />
-          </div>
-          <Button type="button" variant="link" className="text-blue-600">
+          {ipFilterRows.map((row) => (
+            <div key={row.id} className="flex gap-4 max-w-4xl items-center">
+              <Combobox
+                options={[
+                  { value: "is_not_in", label: "Is not in" },
+                  { value: "is_in", label: "Is in" },
+                ]}
+                value={row.operator}
+                onValueChange={(value) => handleOperatorChange(value, row.id)}
+                placeholder="Select operator"
+                className="w-1/3"
+              />
+              <Input
+                placeholder="e.g. 192.168.1.88"
+                className="w-2/3"
+                value={row.ipAddress}
+                onChange={(e) => handleIpAddressChange(e.target.value, row.id)}
+              />
+              {ipFilterRows.length > 1 && (
+                <Button
+                  type="button"
+                  variant="ghost"
+                  onClick={() => removeIpFilterRow(row.id)}
+                  className="p-2"
+                >
+                  <Trash2 className="h-4 w-4 text-red-500" />
+                </Button>
+              )}
+            </div>
+          ))}
+          <Button
+            type="button"
+            variant="link"
+            className="text-blue-600"
+            onClick={addIpFilterRow}
+          >
             <Plus className="h-4 w-4 mr-1" />
             Add more
           </Button>
