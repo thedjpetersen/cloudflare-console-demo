@@ -11,7 +11,6 @@ export type BasePermission = {
     | "dex"
     | "edit_publish"
     | "report"
-    | "revoke"
     | "run";
 };
 

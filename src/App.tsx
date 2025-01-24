@@ -22,6 +22,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarImage, AvatarFallback } from "./components/ui/avatar";
+import { Toaster } from "sonner";
 
 // Import page components
 import { WebsitesPage } from "@/pages/websites";
@@ -288,18 +289,19 @@ function AppLayout() {
           </footer>
         </SidebarInset>
       </div>
-      <CommandPalette />
     </SidebarProvider>
   );
 }
 
 function App() {
   return (
-    <Router>
-      <CommandProvider>
+    <CommandProvider>
+      <Router>
         <AppLayout />
-      </CommandProvider>
-    </Router>
+        <CommandPalette />
+        <Toaster position="top-right" richColors />
+      </Router>
+    </CommandProvider>
   );
 }
 
